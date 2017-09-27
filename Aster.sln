@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aster.Web", "Aster.Web\Aster.Web.csproj", "{D8C2B951-3294-4632-B1CD-BA15DA9150E7}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{BDE107F4-0952-4C08-B52A-9D6D5387F607}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8C2B951-3294-4632-B1CD-BA15DA9150E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8C2B951-3294-4632-B1CD-BA15DA9150E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8C2B951-3294-4632-B1CD-BA15DA9150E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8C2B951-3294-4632-B1CD-BA15DA9150E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDE107F4-0952-4C08-B52A-9D6D5387F607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDE107F4-0952-4C08-B52A-9D6D5387F607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDE107F4-0952-4C08-B52A-9D6D5387F607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDE107F4-0952-4C08-B52A-9D6D5387F607}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7507BB4-9F61-4E24-B777-8E33EA324934}
+	EndGlobalSection
+EndGlobal

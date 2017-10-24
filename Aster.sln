@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aster.Web", "Aster.Web\Aster.Web.csproj", "{D8C2B951-3294-4632-B1CD-BA15DA9150E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aster.Web", "Aster.Web\Aster.Web.csproj", "{D8C2B951-3294-4632-B1CD-BA15DA9150E7}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{BDE107F4-0952-4C08-B52A-9D6D5387F607}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aster.Users", "Aster.UserIdentity\Aster.Users.csproj", "{1DA1C721-757B-452D-B187-8C8F24605683}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aster.Users.Abstractions", "Aster.Users.Abstractions\Aster.Users.Abstractions.csproj", "{7B9A6DDD-44FC-4EC2-AD94-1A6FC1EDD700}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +19,14 @@ Global
 		{D8C2B951-3294-4632-B1CD-BA15DA9150E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8C2B951-3294-4632-B1CD-BA15DA9150E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8C2B951-3294-4632-B1CD-BA15DA9150E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BDE107F4-0952-4C08-B52A-9D6D5387F607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BDE107F4-0952-4C08-B52A-9D6D5387F607}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BDE107F4-0952-4C08-B52A-9D6D5387F607}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BDE107F4-0952-4C08-B52A-9D6D5387F607}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DA1C721-757B-452D-B187-8C8F24605683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA1C721-757B-452D-B187-8C8F24605683}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA1C721-757B-452D-B187-8C8F24605683}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA1C721-757B-452D-B187-8C8F24605683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B9A6DDD-44FC-4EC2-AD94-1A6FC1EDD700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B9A6DDD-44FC-4EC2-AD94-1A6FC1EDD700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B9A6DDD-44FC-4EC2-AD94-1A6FC1EDD700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B9A6DDD-44FC-4EC2-AD94-1A6FC1EDD700}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

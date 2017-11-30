@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Mvc;
-using Aster.Users.Abstractions.Services;
 using Aster.Users.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Aster.Users.Abstractions;
+using Aster.Store.Users;
+using Microsoft.EntityFrameworkCore;
 
-namespace Aster.Web
-{
+namespace Aster.Web {
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -31,13 +28,19 @@ namespace Aster.Web
             //    options.Filters.Add(new RequireHttpsAttribute());
             //});
 
-            var myusers = new Dictionary<string, string> {
-                {"thang", "test" },
-                {"bean", "password" },
-                {"test", "test" }
-            };
-            services.AddSingleton<ISignInService>(new SignInService(myusers));
+            
+            
+            //Configuring Stores (Repositories)
+            services.AddScoped<IUserRepository, UserRepository>();            
+            
 
+
+
+            
+            //UserServices
+            services.AddScoped<ISignInService, SignInService>();
+            services.AddScoped<IUserService, UserService>();
+            
             services.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -46,6 +49,31 @@ namespace Aster.Web
                 options.LoginPath = "/auth/signin";
             });
         }
+
+        
+        public void ConfigureDevelopmentServices(IServiceCollection services) {
+
+            //ConfigureTestingServices(services);
+            ConfigureProductionServices(services);
+
+        }
+
+        public void ConfigureTestingServices(IServiceCollection services) {
+            services.AddDbContext<UserContext>(c => c.UseInMemoryDatabase("Users"));            
+            ConfigureServices(services);
+        }
+        
+        public void ConfigureProductionServices(IServiceCollection services) {
+            services.AddDbContext<UserContext>(c => {
+                try {                    
+                    c.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                } catch(System.Exception ex) {
+                    var message = ex.Message;
+                }
+            });
+            ConfigureServices(services);
+        }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

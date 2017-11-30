@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aster.Users.Abstractions.Services {
+namespace Aster.Users.Abstractions {
     public interface ISignInService {
-        Task<IUser> ValidateCredentials(string username, string password);
+        Task<IUser> ValidateCredentials(string username, string password);        
     }
 }

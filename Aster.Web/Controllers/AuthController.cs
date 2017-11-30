@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Aster.Web.Models;
-using Aster.Users.Abstractions.Services;
-using Aster.Users.Model;
 using Aster.Users.Abstractions;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Aster.Users.Model;
 
 namespace Aster.Web.Controllers {
 
@@ -17,9 +14,12 @@ namespace Aster.Web.Controllers {
     public class AuthController : Controller {
 
         private ISignInService _signInService;
+        private IUserService _userService;
 
-        public AuthController(ISignInService signInService) {
+        public AuthController(ISignInService signInService, 
+            IUserService userService) {
             _signInService = signInService;
+            _userService = userService;
         }
 
 
@@ -67,6 +67,26 @@ namespace Aster.Web.Controllers {
             var principal = new ClaimsPrincipal(identity);
             await HttpContext.SignInAsync(principal);
         }
+        
+
+        [Route("register")]
+        [HttpGet]
+        public IActionResult Register() {
+            return View();
+        }
+        
+        [Route("register")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(UserModel model) {
+            if(ModelState.IsValid) {                
+                var user = await _userService
+                    .CreateUserAsync(model.Username, model.Email, null, model.Password, null);                
+                return RedirectToAction("Index", "Home");
+            }
+            return View(model);
+        }
+
             
     }
 }

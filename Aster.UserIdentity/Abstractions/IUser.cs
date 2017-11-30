@@ -4,10 +4,9 @@ using System.Text;
 
 namespace Aster.Users.Abstractions
 {
-    public interface IUser
-    {
-        Guid Id { get; set; }
+    public interface IUser {
+        int Id { get; set; }
         string UserName { get; set; }
-        string Email { get; set; }        
+        string Email { get; set; }
     }
 }

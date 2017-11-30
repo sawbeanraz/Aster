@@ -1,10 +1,10 @@
-﻿using Aster.Users.Abstractions.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using Aster.Users.Abstractions;
 using System.Threading.Tasks;
 using Aster.Users.Model;
+using Aster.Data.Abstractions;
 
 namespace Aster.Users.Services {
     /// <summary>
@@ -16,28 +16,23 @@ namespace Aster.Users.Services {
         private IDictionary<string, (string PasswordHash, User User)> _users =
             new Dictionary<string, (string PasswordHash, User User)>();
 
-        public SignInService(IDictionary<string, string> UserList) {
-            foreach(var user in UserList) {
-                _users.Add(user.Key, (user.Value, new User(user.Key)));
-            }
+
+        private readonly IUserRepository _userRepository;
+        
+        public SignInService(IUserRepository userRepository) {
+            _userRepository = userRepository;
         }
+
         
 
         public async Task<IUser> ValidateCredentials(string username, string password) {            
-            var userKey = username.ToLower();
-
-            if(!_users.ContainsKey(userKey)) {
-                return null;
-            }
-
-            //TODO: Implement hashing for password
-            var _passwordHash = _users[userKey].PasswordHash;
-            if(!password.Equals(_passwordHash)) {
-                return null;
-            }
+            var user = await _userRepository.GetUserByUserName(username.ToLower());
             
-            return await Task.FromResult(
-                _users[userKey].User);
+            //var _passwordHash = _users[userKey].PasswordHash;
+            if(!password.Equals(user.PasswordHash)) {
+                return null;
+            }            
+            return user;
         }
     }
 }

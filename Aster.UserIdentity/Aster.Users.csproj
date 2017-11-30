@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Aster.Users.Abstractions\Aster.Users.Abstractions.csproj" />
+    <ProjectReference Include="..\Aster.Data\Aster.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>

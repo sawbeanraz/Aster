@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Aster.Web.Models;
+using Aster.Data;
 
 namespace Aster.Web.Controllers
 {
@@ -17,7 +18,18 @@ namespace Aster.Web.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+
+            var message = "";
+            var dataSettingManager = new DataSettingsManager();
+            var dataSettings = dataSettingManager.LoadSettings();
+            
+            message += dataSettings.DataConnectionString + Environment.NewLine;
+            message += dataSettings.DataProvider + Environment.NewLine;
+
+            message += "This is really coool to work with command line. Eacth change is tracked";
+
+
+            ViewData["Message"] = "Your application description page." + Environment.NewLine + message;
 
             return View();
         }

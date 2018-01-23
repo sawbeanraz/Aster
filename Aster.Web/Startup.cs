@@ -3,88 +3,70 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Aster.Users.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Aster.Users.Abstractions;
-using Aster.Store.Users;
 using Microsoft.EntityFrameworkCore;
+using Aster.Framework.Infrastructure;
 
 namespace Aster.Web {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment environment)
         {
-            Configuration = configuration;
+            Configuration = new ConfigurationBuilder()
+                .SetBasePath(environment.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange:true)
+                .AddEnvironmentVariables()
+                .Build();
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            //TODO: Make Https required
+
+            
+            //TODO: Make Https required            
             //services.AddMvc(options => {
             //    options.Filters.Add(new RequireHttpsAttribute());
             //});
-
             
-            
-            //Configuring Stores (Repositories)
-            services.AddScoped<IUserRepository, UserRepository>();            
-            
-
-
-
-            
-            //UserServices
-            services.AddScoped<ISignInService, SignInService>();
-            services.AddScoped<IUserService, UserService>();
-            
-            services.AddAuthentication(options => {
-                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            }).AddCookie(options => {
-                options.LoginPath = "/auth/signin";
-            });
+            services.ConfigureAsterServices(Configuration);
+            services.ConfigureAsterAuthentication(Configuration);
         }
 
         
-        public void ConfigureDevelopmentServices(IServiceCollection services) {
+        // public void ConfigureDevelopmentServices(IServiceCollection services) {
 
-            //ConfigureTestingServices(services);
-            ConfigureProductionServices(services);
+        //     //ConfigureTestingServices(services);
+        //     ConfigureProductionServices(services);
 
-        }
+        // }
 
-        public void ConfigureTestingServices(IServiceCollection services) {
-            services.AddDbContext<UserContext>(c => c.UseInMemoryDatabase("Users"));            
-            ConfigureServices(services);
-        }
+        // public void ConfigureTestingServices(IServiceCollection services) {
+        //     services.AddDbContext<UserContext>(c => c.UseInMemoryDatabase("Users"));            
+        //     ConfigureServices(services);
+        // }
         
-        public void ConfigureProductionServices(IServiceCollection services) {
-            services.AddDbContext<UserContext>(c => {
-                try {                    
-                    c.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-                } catch(System.Exception ex) {
-                    var message = ex.Message;
-                }
-            });
-            ConfigureServices(services);
-        }
+        // public void ConfigureProductionServices(IServiceCollection services) {
+        //     services.AddDbContext<UserContext>(c => {
+        //         try {                    
+        //             c.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+        //         } catch(System.Exception ex) {
+        //             var message = ex.Message;
+        //         }
+        //     });
+        //     ConfigureServices(services);
+        // }
 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
+            if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
-            }
-            else
-            {
+            } else {
                 app.UseExceptionHandler("/Home/Error");
             }
 
@@ -92,8 +74,7 @@ namespace Aster.Web {
 
             app.UseAuthentication();
 
-            app.UseMvc(routes =>
-            {
+            app.UseMvc(routes => {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

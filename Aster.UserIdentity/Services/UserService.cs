@@ -15,15 +15,14 @@ namespace Aster.Users.Services {
     public class UserService : IUserService {
         
         private readonly IOptions<IdentityOptions> _identityOptions;
+        
         private readonly IUserRepository _userRepository;
 
-        
         public UserService(IUserRepository userRepository,
             IOptions<IdentityOptions> identityOptions) {
             _userRepository = userRepository;
             _identityOptions = identityOptions;            
         }
-        
         
         public async Task<IUser> CreateUserAsync(string username, string email, string[] roleNames, string password, Action<string, string> error) {
             var result = true;
@@ -57,7 +56,7 @@ namespace Aster.Users.Services {
                 PasswordHash = password,
                 EmailConfirmed = false
             };            
-            return await _userRepository.AddAsync(user);            
+            return await _userRepository.InsertAsync(user);            
         }
 
         public async Task<bool> ChangePasswordAsync(IUser user, string currentPassword, string newPassword, Action<string, string> reportError) {            

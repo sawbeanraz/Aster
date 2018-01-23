@@ -1,0 +1,56 @@
+Data 
+Infranstructure for Data Connection and Providers
+
+DataContext is one of service that required to be loaded for dependency Injections
+
+
+
+
+
+
+Module
+ StartBase
+ CoreStartUp
+
+
+
+Aster.Core.Domain
+ Domain
+All Base Entity and AutoMapping 
+
+
+
+
+Services
+Business logic services for the UI to interact.
+
+
+
+
+
+
+
+
+Helper
+Helper Classess  (Global and Task Specific)
+
+
+
+Aster.Framework
+Project that orcherstrate the core module and plugins
+
+
+
+Aster.Web
+Razor website
+
+
+
+
+Aster.WebApi
+Rest Api (may be in future GraphQL) to be consumed by
+
+
+
+
+Localization from Groud Up

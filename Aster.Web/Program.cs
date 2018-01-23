@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
-using Aster.Store.Users;
 
 namespace Aster.Web
 {
@@ -26,14 +25,15 @@ namespace Aster.Web
                     //var catalogContext = services.GetRequiredService<CatalogContext>();                    
                     //CatalogContextSeed.SeedAsync(catalogContext, loggerFactory).Wait();
 
-                    var userContext = services.GetRequiredService<UserContext>();
-                    UserContextSeed.SeedAsync(userContext).Wait();
+                    // var userContext = services.GetRequiredService<UserContext>();
+                    // UserContextSeed.SeedAsync(userContext).Wait();
 
                     
                 } catch(Exception ex) {
                     //TODO: Enable log system 
                     //var logger = loggerFactory.CreateLogger<Program>();
                     //logger.LogError(ex, "An error occurred seeding the DB.");                   
+                    Console.WriteLine(ex.Message);
                 }
             }
 

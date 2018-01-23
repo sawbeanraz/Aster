@@ -2,24 +2,20 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Aster.Web.Models;
-using Aster.Users.Abstractions;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
-using Aster.Users.Model;
+
 
 namespace Aster.Web.Controllers {
 
     [Route("auth")]
     public class AuthController : Controller {
 
-        private ISignInService _signInService;
-        private IUserService _userService;
+        // private ISignInService _signInService;
+        // private IUserService _userService;
 
-        public AuthController(ISignInService signInService, 
-            IUserService userService) {
-            _signInService = signInService;
-            _userService = userService;
+        public AuthController() {            
         }
 
 
@@ -41,18 +37,19 @@ namespace Aster.Web.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignIn(SignInModel model, string returnUrl = null ) {
-            if(ModelState.IsValid) {
-                var user = await _signInService
-                    .ValidateCredentials(model.Username, model.Password);
+            // if(ModelState.IsValid) {
+            //     // var user = await _signInService
+            //     //     .ValidateCredentials(model.Username, model.Password);
 
-                await SignInUser(user.UserName);
+            //     // await SignInUser(user.UserName);
 
-                if(!string.IsNullOrEmpty(returnUrl)) {
-                    return Redirect(returnUrl);
-                }
+            //     // if(!string.IsNullOrEmpty(returnUrl)) {
+            //     //     return Redirect(returnUrl);
+            //     // }
 
-                return RedirectToAction("Index", "Home");                
-            }            
+            //     // return RedirectToAction("Index", "Home");
+            // }       
+            await Task.FromResult(100);     //just to ignore warning     
             return View(model);
         }
         
@@ -79,11 +76,12 @@ namespace Aster.Web.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(UserModel model) {
-            if(ModelState.IsValid) {                
-                var user = await _userService
-                    .CreateUserAsync(model.Username, model.Email, null, model.Password, null);                
-                return RedirectToAction("Index", "Home");
-            }
+            // if(ModelState.IsValid) {                
+            //     var user = await _userService
+            //         .CreateUserAsync(model.Username, model.Email, null, model.Password, null);                
+            //     return RedirectToAction("Index", "Home");
+            // }
+            await Task.FromResult(100);// just to ignore warning;
             return View(model);
         }
 

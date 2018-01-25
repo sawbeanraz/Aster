@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace Aster.Data.Abstractions {
     public interface IDbContext
@@ -10,12 +12,13 @@ namespace Aster.Data.Abstractions {
         /// Get DbSet
         /// </summary>
         /// <typeparam name="TEntity">Entity type</typeparam>
-        /// <returns>DbSet</returns>
+
         DbSet<TEntity> Set<TEntity>() where TEntity: BaseEntity;
 
         /// <summary>
         /// Save changes
         /// </summary>
+
         /// <returns>Result</returns>        
         Task<int> SaveChangesAsync();
 

@@ -1,10 +1,9 @@
 using Aster.Framework.Infrastructure.DependencyManagement;
 using Autofac;
 using Aster.Data;
-using Aster.Data.DataProviders;
-using Aster.Data.DataProviders.Managers;
-using Aster.Data.Abstractions;
 using System;
+using Aster.Services.Users;
+using Aster.Data.EntityFramework;
 
 namespace Aster.Framework {
 
@@ -25,7 +24,7 @@ namespace Aster.Framework {
       builder.Register(x => new EFDataProviderManager(x.Resolve<DataSettings>()))
         .As<BaseDataProviderManager>().InstancePerDependency();
 
-
+        
       //Register Data Provider 
       builder.Register(x => x.Resolve<BaseDataProviderManager>().LoadDataProvider())
         .As<IDataProvider>().InstancePerDependency();
@@ -47,6 +46,10 @@ namespace Aster.Framework {
         throw new Exception("Unable to set data provider");
       }
       
+
+      builder.RegisterGeneric(typeof(EFRepository<>)).As(typeof(IRepositoryAsync<>)).InstancePerLifetimeScope();
+
+      builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
     }
 
 

@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Aster.Framework.Infrastructure;
+using System;
 
 namespace Aster.Web {
     public class Startup
@@ -22,7 +23,7 @@ namespace Aster.Web {
         public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
 
@@ -32,8 +33,8 @@ namespace Aster.Web {
             //    options.Filters.Add(new RequireHttpsAttribute());
             //});
             
-            services.ConfigureAsterServices(Configuration);
-            services.ConfigureAsterAuthentication(Configuration);
+            return services.ConfigureAsterServices(Configuration);
+            //services.ConfigureAsterAuthentication(Configuration);
         }
 
         

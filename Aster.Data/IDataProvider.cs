@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Aster.Data.DataProviders {
+namespace Aster.Data {
 
   public interface IDataProvider {
 

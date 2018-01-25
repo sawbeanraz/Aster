@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aster.Data.Abstractions {
+namespace Aster.Data {
     public interface IRepositoryAsync<T> where T : BaseEntity {
 
         Task<T> GetByIdAsync(object id);        

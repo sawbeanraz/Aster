@@ -1,6 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <ProjectReference Include="..\Aster.Data\Aster.Data.csproj" />
+    <ProjectReference Include="..\Aster.Services\Aster.Services.csproj" />
+    <ProjectReference Include="..\Aster.Data.EntityFramework\Aster.Data.EntityFramework.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.6.2" />

@@ -5,7 +5,8 @@ using Aster.Web.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
-
+using Aster.Services.Users;
+using Aster.Domain.Users;
 
 namespace Aster.Web.Controllers {
 
@@ -15,7 +16,11 @@ namespace Aster.Web.Controllers {
         // private ISignInService _signInService;
         // private IUserService _userService;
 
-        public AuthController() {            
+
+        private readonly IUserService _userService;
+
+        public AuthController(IUserService userservice) {            
+            _userService = userservice;
         }
 
 
@@ -49,7 +54,14 @@ namespace Aster.Web.Controllers {
 
             //     // return RedirectToAction("Index", "Home");
             // }       
-            await Task.FromResult(100);     //just to ignore warning     
+
+            var _user = new User() {
+                UserName = "test",
+                PasswordHash = "testing"
+            };
+
+            await _userService.ChangePasswordAsync(_user, "test", "test");
+            
             return View(model);
         }
         

@@ -1,7 +1,7 @@
-using Aster.Data.Abstractions;
+using Aster.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Aster.Data.DataProviders {
+namespace Aster.Data.EntityFramework {
 
   public class MySqlDataProvider : IDataProvider {
     public bool StoredProcedureSupported => true;

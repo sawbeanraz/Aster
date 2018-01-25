@@ -1,6 +1,6 @@
-using Aster.Data.Abstractions;
+using Aster.Data;
 
-namespace Aster.Data.DataProviders {
+namespace Aster.Data.EntityFramework {
 
 
   public class SqlCeDataProvider : IDataProvider {

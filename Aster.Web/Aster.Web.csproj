@@ -8,6 +8,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aster.Framework\Aster.Framework.csproj" />
+    <ProjectReference Include="..\Aster.Services\Aster.Services.csproj" />
+    <ProjectReference Include="..\Aster.Core.Domain\Aster.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />

@@ -1,10 +1,8 @@
 using System;
 
-namespace Aster.Data.DataProviders.Managers {
+namespace Aster.Data {
 
   public abstract class BaseDataProviderManager {
-
-
 
     protected BaseDataProviderManager(DataSettings settings) {
       if(settings == null) {

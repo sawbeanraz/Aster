@@ -1,4 +1,4 @@
 ﻿{
     "DataProvider": "sqlserver",
-    "DataConnectionString": "Data Source=devsd;Initial Catalog=testdb;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=Wordpress123"    
+    "DataConnectionString": "Data Source=SVR_DEVMOBILE\\DEVPRESQL;Initial Catalog=StandardSystemv2;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=password"    
 }

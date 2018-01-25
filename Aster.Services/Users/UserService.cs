@@ -1,4 +1,6 @@
+using System;
 using System.Threading.Tasks;
+using Aster.Data;
 using Aster.Domain.Users;
 
 namespace Aster.Services.Users {
@@ -6,9 +8,24 @@ namespace Aster.Services.Users {
 
   public class UserService : IUserService
   {
+
+    private readonly IRepositoryAsync<User>  _userRepository;
+
+    public UserService(IRepositoryAsync<User> userRepository) {
+      _userRepository = userRepository;
+    }
+
+
     public async Task<bool> ChangePasswordAsync(User user, string oldPassword, string newPassword)
     {
-      throw new System.NotImplementedException();
+      try {      
+        await _userRepository.InsertAsync(user);
+        return true;
+
+      } catch(Exception ex) {
+        throw ex;
+      }
+
     }
 
     public async Task<User> GetUserByEmail(string email)

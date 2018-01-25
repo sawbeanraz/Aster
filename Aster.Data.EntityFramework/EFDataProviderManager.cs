@@ -1,13 +1,14 @@
 using System;
-namespace Aster.Data.DataProviders.Managers {
+using Aster.Data;
+
+namespace Aster.Data.EntityFramework {
+    
 
   public class EFDataProviderManager: BaseDataProviderManager {
-
 
     public EFDataProviderManager(DataSettings settings): base(settings) {
 
     }
-
 
     public override IDataProvider LoadDataProvider() {
 
@@ -33,7 +34,4 @@ namespace Aster.Data.DataProviders.Managers {
     
 
   }
-
-
-
 }

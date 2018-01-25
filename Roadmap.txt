@@ -1,3 +1,61 @@
+
+Aster.Core.Data consists of data abstractions (BaseEntity, IRepository, IDbContext, DataSettings, IDataProviders)
+
+Aster.Core.Domain references Aster.Core.Data for BaseEntity to define the core domain classes
+
+Aster.Data.EntityFramework references Core.Data and Core.Domain. 
+  Has Concrete class for Repository, DBContext and DAtaProviders
+  Has mapping for Domain and presistance database
+
+*Aster.Data.Dapper references Core.Data and Core.Domain
+  has concrete class for repositoty, dbcontext and dataproviders
+
+*Aster.Data.Mongoose
+  has concrete class for repositoty, dbcontext and dataproviders
+------------------------------------------------------
+
+Aster.Services  
+  Business Layout (Should have unit text)
+  Refereces data and domain. 
+  Implement IService and auto load for dependency injection
+  (**Completely unaware of actual data being saved)
+
+-------------------------------
+
+Aster.Framework.Engine
+Aster.Framework.DependencyManagement
+Aster.Framework
+  Orchestrate the DI
+    1. Data
+    2. Services
+    3. Others (Configurations, Authentication, Security, Globalization, Localization, Validators, Exporters )
+  Runs Engine
+  Typefinders
+  Singleton
+
+
+
+Aster.Framework.Presentation (Controllers and pages, SEO, taghelpers, Themes, Area, UI)
+
+
+
+
+
+Aster.Web (Presentaional MVC)
+Aster.Api (Presentaional MC)
+
+  
+
+
+
+
+
+
+
+
+
+
+
 Data 
 Infranstructure for Data Connection and Providers
 

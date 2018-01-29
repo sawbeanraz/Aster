@@ -49,25 +49,15 @@ namespace Aster.Data.EntityFramework {
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         //TODO: Create/Bind Modelsad dynamically
         // modelBuilder.Configuration.Add(User);
-        
-
-        var configurationTypes = Assembly.GetExecutingAssembly().GetTypes()
-          .Where(type => !string.IsNullOrEmpty(type.Namespace))
-          .Where(type => type.BaseType != null && type.BaseType.IsGenericType &&
-            type.BaseType.GetGenericTypeDefinition() == typeof(DbEntityConfiguration<>));
+      var configurationTypes = Assembly.GetExecutingAssembly().GetTypes()
+        .Where(type => !string.IsNullOrEmpty(type.Namespace))
+        .Where(type => type.BaseType != null && type.BaseType.IsGenericType &&
+          type.BaseType.GetGenericTypeDefinition() == typeof(DbEntityConfiguration<>));
 
       foreach(var configType in configurationTypes) {
         dynamic configInstance = Activator.CreateInstance(configType);
-        // MethodInfo configureMethod = configType.GetMethod("Configure");
-        
-        modelBuilder.Entity(configInstance.Configure);
-        //modelBuilder.Entity(configureMethod.Invoke(configInstance, null));
+        modelBuilder.ApplyConfiguration(configInstance);
       }
-
-// MethodInfo method = typeof(A).GetMethod("Method");
-// OpenInstanceDelegate action = (OpenInstanceDelegate)Delegate.CreateDelegate(typeof(OpenInstanceDelegate), a, method);
-
-// PossiblyExecuteDelegate(action);
 
 
         // modelBuilder.AddConfiguration(new UserConfiguration());

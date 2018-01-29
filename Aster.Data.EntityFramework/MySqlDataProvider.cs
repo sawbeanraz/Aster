@@ -9,15 +9,16 @@ namespace Aster.Data.EntityFramework {
     public bool BackupSupported => true;
 
     public void InitConnectionFactory() {
-      throw new System.NotImplementedException();
+      // throw new System.NotImplementedException();
     }
 
     public void InitDatabase() {
-      throw new System.NotImplementedException();
+      InitConnectionFactory();
+      SetDatabaseInitializer();
     }
 
     public void SetDatabaseInitializer() {
-      throw new System.NotImplementedException();
+      // throw new System.NotImplementedException();
     }
   }
 }

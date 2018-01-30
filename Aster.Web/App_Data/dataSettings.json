@@ -1,4 +1,4 @@
 ﻿{
     "DataProvider": "mysql",
-    "DataConnectionString": "server=localhost;userid=root;password=admin123;database=dbaster;"    
+    "DataConnectionString": "server=localhost;Port=8081;userid=root;password=ChangeMeIfYouWant;database=dbaster;"    
 }

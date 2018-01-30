@@ -47,8 +47,7 @@ namespace Aster.Data.EntityFramework {
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
-        //TODO: Create/Bind Modelsad dynamically
-        // modelBuilder.Configuration.Add(User);
+
       var configurationTypes = Assembly.GetExecutingAssembly().GetTypes()
         .Where(type => !string.IsNullOrEmpty(type.Namespace))
         .Where(type => type.BaseType != null && type.BaseType.IsGenericType &&
@@ -58,16 +57,8 @@ namespace Aster.Data.EntityFramework {
         dynamic configInstance = Activator.CreateInstance(configType);
         modelBuilder.ApplyConfiguration(configInstance);
       }
-
-
-        // modelBuilder.AddConfiguration(new UserConfiguration());
-        // modelBuilder.Entity<User>()
-        //   .ToTable("User")
-        //   .HasKey(c => c.Id);
-        //   //.Property(c => c.Username).HasMaxLength(255).IsRequired();          
-
-
-        base.OnModelCreating(modelBuilder);
+      
+      base.OnModelCreating(modelBuilder);
     }
 
     protected virtual TEntity AttachEntityToContext<TEntity>(TEntity entity) where TEntity: BaseEntity, new() {

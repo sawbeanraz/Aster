@@ -5,15 +5,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Reflection;
-
 using Microsoft.EntityFrameworkCore;
-
 using Aster.Data;
-using Aster.Domain;
-using Aster.Domain.Users;
-
-
-
 using Aster.Data.EntityFramework.Configuration;
 
 /// <summary>
@@ -47,8 +40,7 @@ namespace Aster.Data.EntityFramework {
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
-        //TODO: Create/Bind Modelsad dynamically
-        // modelBuilder.Configuration.Add(User);
+
       var configurationTypes = Assembly.GetExecutingAssembly().GetTypes()
         .Where(type => !string.IsNullOrEmpty(type.Namespace))
         .Where(type => type.BaseType != null && type.BaseType.IsGenericType &&
@@ -59,24 +51,17 @@ namespace Aster.Data.EntityFramework {
         modelBuilder.ApplyConfiguration(configInstance);
       }
 
+      base.OnModelCreating(modelBuilder);
 
-        // modelBuilder.AddConfiguration(new UserConfiguration());
-        // modelBuilder.Entity<User>()
-        //   .ToTable("User")
-        //   .HasKey(c => c.Id);
-        //   //.Property(c => c.Username).HasMaxLength(255).IsRequired();          
-
-
-        base.OnModelCreating(modelBuilder);
     }
 
     protected virtual TEntity AttachEntityToContext<TEntity>(TEntity entity) where TEntity: BaseEntity, new() {
-        var alreadyAttached = Set<TEntity>().Local.FirstOrDefault(x => x.Id == entity.Id);
-        if(alreadyAttached == null) {
-            Set<TEntity>().Attach(entity);
-            return entity;
-        }
-        return alreadyAttached;
+      var alreadyAttached = Set<TEntity>().Local.FirstOrDefault(x => x.Id == entity.Id);
+      if(alreadyAttached == null) {
+          Set<TEntity>().Attach(entity);
+          return entity;
+      }
+      return alreadyAttached;
     }
 
     public bool ProxyCreationEnabled { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

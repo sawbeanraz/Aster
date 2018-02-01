@@ -1,5 +1,5 @@
 
-Aster.Core.Data consists of data abstractions (BaseEntity, IRepository, IDbContext, DataSettings, IDataProviders)
+Aster.Data consists of data abstractions (BaseEntity, IRepository, IDbContext, DataSettings, IDataProviders)
 
 Aster.Core.Domain references Aster.Core.Data for BaseEntity to define the core domain classes
 

@@ -3,8 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Aster.Domain.Users
-{
+namespace Aster.Core.Domain.Security {
+    
     public class User : BaseEntity {
 
         public User() { }
@@ -12,7 +12,6 @@ namespace Aster.Domain.Users
             UserName = Username;
         }
 
-        public int Id { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
         public string PasswordHash { get; set; }

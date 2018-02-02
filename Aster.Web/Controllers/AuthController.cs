@@ -59,6 +59,7 @@ namespace Aster.Web.Controllers {
                 UserName = "test",
                 PasswordHash = "testing"
             };
+            
 
             await _userService.ChangePasswordAsync(_user, "test", "test");
             

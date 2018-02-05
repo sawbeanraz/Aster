@@ -7,8 +7,8 @@ namespace Aster.Data {
 
         private static bool? _isDatabasInstalled;
 
-        public static bool IsDatabaseInstalled() {
-            return false;
+        public static bool IsDatabaseInstalled() {            
+            return _isDatabasInstalled ?? false;
         }
 
         public static void Flush() {

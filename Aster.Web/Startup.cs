@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Aster.Framework.Infrastructure;
 using System;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Aster.Web {
     public class Startup {
@@ -46,7 +47,8 @@ namespace Aster.Web {
 
             app.UseStaticFiles();
 
-            app.UseAuthentication();
+            //app.UseAuthentication();
+            app.UseMiddleware<AuthenticationMiddleware>();
 
             app.UseMvc(routes => {
                 routes.MapRoute(

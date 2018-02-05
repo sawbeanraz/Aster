@@ -55,13 +55,16 @@ namespace Aster.Web.Controllers {
             //     // return RedirectToAction("Index", "Home");
             // }       
 
-            var _user = new User() {
-                UserName = "test",
-                PasswordHash = "testing"
-            };
+            // var _user = new User() {
+            //     UserName = "test",
+            //     PasswordHash = "testing"
+            // };
             
 
-            await _userService.ChangePasswordAsync(_user, "test", "test");
+            // await _userService.ChangePasswordAsync(_user, "test", "test");
+
+
+            await SignInUser("Sabin");
             
             return View(model);
         }

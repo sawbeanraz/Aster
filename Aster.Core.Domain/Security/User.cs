@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Aster.Core.Domain.Security {
+    
     public class User : BaseEntity {
+
         public User() { }
         public User(string Username) {
             UserName = Username;

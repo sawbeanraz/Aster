@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using Aster.Domain.Users;
+using Aster.Core.Domain.Security;
 
 namespace Aster.Services.Users {
   public interface IUserService {

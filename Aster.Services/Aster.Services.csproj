@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <ItemGroup>
-    <ProjectReference Include="..\Aster.Core.Domain\Aster.Domain.csproj" />
+    <ProjectReference Include="..\Aster.Core.Domain\Aster.Core.Domain.csproj" />
+    <ProjectReference Include="..\Aster.Data\Aster.Data.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

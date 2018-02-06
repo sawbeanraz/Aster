@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Aster.Data;
-using Aster.Domain.Users;
+using Aster.Core.Domain.Security;
 
 namespace Aster.Services.Users {
 
@@ -28,12 +28,12 @@ namespace Aster.Services.Users {
 
     }
 
-    public async Task<User> GetUserByEmail(string email)
+    public Task<User> GetUserByEmail(string email)
     {
       throw new System.NotImplementedException();
     }
 
-    public async Task<User> GetUserByUserName(string username)
+    public Task<User> GetUserByUserName(string username)
     {
       throw new System.NotImplementedException();
     }

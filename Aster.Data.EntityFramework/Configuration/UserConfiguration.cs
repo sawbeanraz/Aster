@@ -1,8 +1,6 @@
-using Aster.Domain.Users;
+using Aster.Core.Domain.Security;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-
 
 namespace Aster.Data.EntityFramework.Configuration {
 

@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Aster.Framework.Infrastructure.DependencyManagement;
 using Aster.Framework.TypeFinder;
+
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 
@@ -17,15 +18,26 @@ namespace Aster.Framework.Infrastructure.Engine {
 
 
     private IServiceProvider _serviceProvider { get; set; }
+
+
     public IServiceProvider ConfigureServices(IServiceCollection services, IConfigurationRoot configuration) {
       
       var typeFinder = new WebAppTypeFinder();
       
+      var startupConfigurations = typeFinder.FindClassesOfType<IStartupConfiguration>();
+      var startupInstances = startupConfigurations
+        .Select(startup => (IStartupConfiguration)Activator.CreateInstance(startup))
+        .OrderBy(startup => startup.Order);
 
-      //create and sort startup configurations
+      
+      foreach(var startupInstance in startupInstances) {
+        startupInstance.ConfigureServices(services, configuration);
+      }
 
 
-      //configure services
+
+      
+      
 
 
       //register auto mappers configurations
@@ -45,7 +57,6 @@ namespace Aster.Framework.Infrastructure.Engine {
 
       //register engine
       containerBuilder.RegisterInstance(this).As<IEngine>().SingleInstance();
-
 
       containerBuilder.RegisterInstance(typeFinder).As<ITypeFinder>().SingleInstance();
 

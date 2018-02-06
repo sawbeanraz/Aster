@@ -5,15 +5,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Reflection;
-
 using Microsoft.EntityFrameworkCore;
-
 using Aster.Data;
-using Aster.Domain;
-using Aster.Domain.Users;
-
-
-
 using Aster.Data.EntityFramework.Configuration;
 
 /// <summary>
@@ -62,12 +55,12 @@ namespace Aster.Data.EntityFramework {
     }
 
     protected virtual TEntity AttachEntityToContext<TEntity>(TEntity entity) where TEntity: BaseEntity, new() {
-        var alreadyAttached = Set<TEntity>().Local.FirstOrDefault(x => x.Id == entity.Id);
-        if(alreadyAttached == null) {
-            Set<TEntity>().Attach(entity);
-            return entity;
-        }
-        return alreadyAttached;
+      var alreadyAttached = Set<TEntity>().Local.FirstOrDefault(x => x.Id == entity.Id);
+      if(alreadyAttached == null) {
+          Set<TEntity>().Attach(entity);
+          return entity;
+      }
+      return alreadyAttached;
     }
 
     public bool ProxyCreationEnabled { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

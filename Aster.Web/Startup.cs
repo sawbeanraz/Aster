@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Aster.Framework.Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
 using System;
-using Microsoft.AspNetCore.Authentication;
+
 
 namespace Aster.Web {
     public class Startup {
@@ -24,15 +24,15 @@ namespace Aster.Web {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services) {
-            services.AddMvc();
+            
 
             //TODO: Make Https required            
             //services.AddMvc(options => {
             //    options.Filters.Add(new RequireHttpsAttribute());
             //});
-            
-            return services.ConfigureAsterServices(Configuration);
-            //services.ConfigureAsterAuthentication(Configuration);
+
+  
+            return services.ConfigureAsterServices(Configuration);            
         }
         
 
@@ -47,9 +47,8 @@ namespace Aster.Web {
 
             app.UseStaticFiles();
 
-            //app.UseAuthentication();
-            app.UseMiddleware<AuthenticationMiddleware>();
-
+            app.UseAuthentication();
+            
             app.UseMvc(routes => {
                 routes.MapRoute(
                     name: "default",

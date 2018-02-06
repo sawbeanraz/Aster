@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
+using Aster.Services.Users;
+using Aster.Core.Domain.Security;
 // using System.Security.Claims;
 // using Microsoft.AspNetCore.Authentication;
-// using Microsoft.AspNetCore.Http;
 // using Nop.Core.Domain.Customers;
 // using Nop.Services.Customers;
 
@@ -24,7 +26,7 @@ namespace Aster.Services.Authentication {
           // this._httpContextAccessor = httpContextAccessor;
         }
 
-        public virtual async void SignIn(User user, bool isPersistent) {
+        public virtual void SignIn(User user, bool isPersistent) {
             // if (customer == null)
             //     throw new ArgumentNullException(nameof(customer));
 
@@ -53,18 +55,20 @@ namespace Aster.Services.Authentication {
 
             // //cache authenticated customer
             // _cachedCustomer = customer;
+            return;
         }
 
 
-        public virtual async void SignOut() {
+        public virtual void SignOut() {
             // //reset cached customer
             // _cachedCustomer = null;
 
             // //and sign out from the current authentication scheme
             // await _httpContextAccessor.HttpContext.SignOutAsync(NopCookieAuthenticationDefaults.AuthenticationScheme);
+            return;
         }
 
-        public virtual User GetAuthenticatedCustomer() {
+        public virtual User GetAuthenticatedUser() {
             // //whether there is a cached customer
             // if (_cachedCustomer != null)
             //     return _cachedCustomer;
@@ -100,6 +104,7 @@ namespace Aster.Services.Authentication {
             // _cachedCustomer = customer;
 
             // return _cachedCustomer;
+            return null;
         }
     }
 }

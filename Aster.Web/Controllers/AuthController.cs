@@ -6,7 +6,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Aster.Services.Users;
-using Aster.Domain.Users;
+using Aster.Core.Domain.Security;
 
 namespace Aster.Web.Controllers {
 

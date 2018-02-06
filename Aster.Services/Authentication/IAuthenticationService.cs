@@ -1,4 +1,4 @@
-using Aster.Core.Domain;
+using Aster.Core.Domain.Security;
 /* 
   TODO: Instead of User should let's   
   AdminUser, 

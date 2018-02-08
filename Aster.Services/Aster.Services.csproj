@@ -4,6 +4,7 @@
     <ProjectReference Include="..\Aster.Data\Aster.Data.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.0.1" />
   </ItemGroup>
   <PropertyGroup>

@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Aster.Data;
 using Aster.Core.Domain.Security;
+using Aster.Services.Security;
 
 namespace Aster.Services.Users {
 
@@ -10,14 +11,17 @@ namespace Aster.Services.Users {
   {
 
     private readonly IRepositoryAsync<User>  _userRepository;
+    private readonly IEncryptionService _encryptionService;
 
-    public UserService(IRepositoryAsync<User> userRepository) {
+    public UserService(
+      IRepositoryAsync<User> userRepository,
+      IEncryptionService encryptionService) {
       _userRepository = userRepository;
+      _encryptionService = encryptionService;
     }
 
 
-    public async Task<bool> ChangePasswordAsync(User user, string oldPassword, string newPassword)
-    {
+    public async Task<bool> ChangePasswordAsync(User user, string oldPassword, string newPassword) {
       try {      
         await _userRepository.InsertAsync(user);
         return true;
@@ -25,18 +29,29 @@ namespace Aster.Services.Users {
       } catch(Exception ex) {
         throw ex;
       }
-
     }
 
-    public Task<User> GetUserByEmail(string email)
-    {
+    public Task<User> GetUserByEmail(string email) {
       throw new System.NotImplementedException();
     }
 
-    public Task<User> GetUserByUserName(string username)
-    {
+
+
+    public Task<User> GetUserByUserName(string username) {
       throw new System.NotImplementedException();
     }
+
+
+    public async Task<bool> ValidatePasswordAsync(User user, string password) {
+      try {
+        var hashedPassword = _encryptionService.Hash(password, "u53r-pa55w0rd");
+        return await Task.FromResult(user.PasswordHash == hashedPassword);
+      } catch (Exception ex) {
+        throw  ex;
+      }
+
+    }
+
   }
 
 }

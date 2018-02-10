@@ -1,9 +1,10 @@
-using Aster.Framework.Infrastructure.DependencyManagement;
+using System;
 using Autofac;
 using Aster.Data;
-using System;
-using Aster.Services.Users;
 using Aster.Data.EntityFramework;
+using Aster.Framework.Infrastructure.DependencyManagement;
+using Aster.Services.Users;
+using Aster.Services.Security;
 
 namespace Aster.Framework {
 
@@ -49,6 +50,7 @@ namespace Aster.Framework {
 
       builder.RegisterGeneric(typeof(EFRepository<>)).As(typeof(IRepositoryAsync<>)).InstancePerLifetimeScope();
 
+      builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerLifetimeScope();    
       builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
     }
 

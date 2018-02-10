@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Microsoft.EntityFrameworkCore;
 
 using Aster.Data;
@@ -14,12 +13,23 @@ namespace  Aster.Data.EntityFramework {
   public class EFRepository<T> : IRepositoryAsync<T> where T : BaseEntity {
 
     private readonly IDbContext _context;
+    private DbSet<T> _entities;
     
     public EFRepository(IDbContext context) {
       _context = context;
     }
 
-    public Task<IQueryable<T>> ListAsync => throw new NotImplementedException();
+    public IQueryable<T> List {
+      get {
+        return Entities;
+      }
+    }
+
+    public IQueryable<T> ListNoTracking {
+      get {
+        return Entities.AsNoTracking();
+      }
+    }
 
 
     public async Task DeleteAsync(T entity) {
@@ -27,7 +37,7 @@ namespace  Aster.Data.EntityFramework {
         if (entity == null) {
           throw new ArgumentNullException(nameof(entity));
         }
-        _context.Set<T>().Remove(entity);
+        Entities.Remove(entity);
         await _context.SaveChangesAsync();
         
       }
@@ -43,7 +53,7 @@ namespace  Aster.Data.EntityFramework {
         }
 
         foreach (var entity in entities) {
-          _context.Set<T>().Remove(entity);
+          Entities.Remove(entity);
         }
         await _context.SaveChangesAsync();
       }
@@ -54,7 +64,7 @@ namespace  Aster.Data.EntityFramework {
 
     public async Task<T> GetByIdAsync(object id) {
       return await Task.FromResult(
-          _context.Set<T>().Find(id)
+          Entities.Find(id)
       );
     }
 
@@ -64,10 +74,10 @@ namespace  Aster.Data.EntityFramework {
           throw new ArgumentNullException(nameof(entity));
         }
 
-        var dbSet = _context.Set<T>();
-        dbSet.Add(entity);
+        Entities.Add(entity);        
         await _context.SaveChangesAsync();
         return entity;
+
       } catch (DbUpdateException dbEx) {
         throw new Exception(GetFullErrorTextAndRollbackEntityChanges(dbEx), dbEx);
       }
@@ -81,7 +91,7 @@ namespace  Aster.Data.EntityFramework {
         }
 
         foreach (var entity in entities) {
-          _context.Set<T>().Add(entity);
+          Entities.Add(entity);
         }
         await _context.SaveChangesAsync();
 
@@ -135,6 +145,16 @@ namespace  Aster.Data.EntityFramework {
       }        
       return msg;
     }
+
+
+    protected virtual DbSet<T> Entities {
+      get {
+        if (_entities == null)
+          _entities = _context.Set<T>();
+        return _entities;
+      }
+    }
+
 
   }    
 }

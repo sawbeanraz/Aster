@@ -1,8 +1,10 @@
 using System;
 using System.Threading.Tasks;
+using System.Linq;
 using Aster.Data;
 using Aster.Core.Domain.Security;
 using Aster.Services.Security;
+
 
 namespace Aster.Services.Users {
 
@@ -31,8 +33,18 @@ namespace Aster.Services.Users {
       }
     }
 
-    public Task<User> GetUserByEmail(string email) {
-      throw new System.NotImplementedException();
+    public async Task<User> GetUserByEmail(string email) {
+
+      if (string.IsNullOrWhiteSpace(email))
+            return null;
+
+        var query = from u in _userRepository.List
+            orderby u.Id
+            where u.Email == email
+            select u;
+        var user = query.FirstOrDefault();
+
+        return await Task.FromResult(user);
     }
 
 

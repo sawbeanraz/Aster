@@ -42,30 +42,19 @@ namespace Aster.Web.Controllers {
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SignIn(SignInModel model, string returnUrl = null ) {
-            // if(ModelState.IsValid) {
-            //     // var user = await _signInService
-            //     //     .ValidateCredentials(model.Username, model.Password);
+            if(ModelState.IsValid) {
 
-            //     // await SignInUser(user.UserName);
+                var user = await _userService.GetUserByEmail(model.Username);
+                if(await _userService.ValidatePasswordAsync(user, model.Password)) {                    
+                  await SignInUser(user.UserName);            
 
-            //     // if(!string.IsNullOrEmpty(returnUrl)) {
-            //     //     return Redirect(returnUrl);
-            //     // }
-
-            //     // return RedirectToAction("Index", "Home");
-            // }       
-
-            // var _user = new User() {
-            //     UserName = "test",
-            //     PasswordHash = "testing"
-            // };
-            
-
-            // await _userService.ChangePasswordAsync(_user, "test", "test");
-
-
-            await SignInUser("Sabin");
-            
+                  if(!string.IsNullOrEmpty(returnUrl)) {
+                      return Redirect(returnUrl);
+                  }
+                  
+                  return RedirectToAction("Index", "Home");
+                }                            
+            }
             return View(model);
         }
         

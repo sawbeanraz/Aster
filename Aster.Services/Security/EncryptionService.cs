@@ -6,20 +6,13 @@ using System.Security.Cryptography;
 namespace Aster.Services.Security {
   public class EncryptionService: IEncryptionService {
 
-
-    private string _hashAlgorithm = "SHA512";    
     private string _encryptionKey = "1457896310254654";
 
     private string CreateHash(byte[] data) {
 
-      var algorithm = HashAlgorithm.Create(_hashAlgorithm);
+      var sha1 = SHA1.Create();
 
-
-      if (algorithm == null) {
-        throw new ArgumentException("Unrecognized hash name");
-      }
-
-      var hashByteArray = algorithm.ComputeHash(data);
+      var hashByteArray = sha1.ComputeHash(data);
 
       return BitConverter.ToString(hashByteArray).Replace("-", "");
     }

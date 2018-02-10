@@ -14,6 +14,7 @@ namespace Aster.Data {
         Task UpdateAsync(IEnumerable<T> entities);
         Task DeleteAsync(T entity);        
         Task DeleteAsync(IEnumerable<T> entities);
-        Task<IQueryable<T>> ListAsync { get; }
+        IQueryable<T> List { get; }
+        IQueryable<T> ListNoTracking { get; }
     }
 }

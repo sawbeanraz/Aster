@@ -49,8 +49,17 @@ namespace Aster.Services.Users {
 
 
 
-    public Task<User> GetUserByUserName(string username) {
-      throw new System.NotImplementedException();
+    public async Task<User> GetUserByUserName(string username) {
+      if(string.IsNullOrWhiteSpace(username)) 
+        return null;
+
+      var query = from u in _userRepository.List
+        orderby u.Id
+        where u.UserName == username
+        select u;
+      var user = query.FirstOrDefault();
+
+      return await Task.FromResult(user);
     }
 
 
@@ -63,7 +72,5 @@ namespace Aster.Services.Users {
       }
 
     }
-
   }
-
 }

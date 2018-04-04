@@ -27,16 +27,14 @@ namespace Aster.Web
 
                     // var userContext = services.GetRequiredService<UserContext>();
                     // UserContextSeed.SeedAsync(userContext).Wait();
-
                     
                 } catch(Exception ex) {
                     //TODO: Enable log system 
                     //var logger = loggerFactory.CreateLogger<Program>();
-                    //logger.LogError(ex, "An error occurred seeding the DB.");                   
+                    //logger.LogError(ex, "An error occurred seeding the DB.");
                     Console.WriteLine(ex.Message);
                 }
             }
-
 
             host.Run();
         }

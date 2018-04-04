@@ -44,7 +44,16 @@ namespace Aster.Web.Controllers {
         public async Task<IActionResult> SignIn(SignInModel model, string returnUrl = null ) {
             if(ModelState.IsValid) {
 
-                var user = await _userService.GetUserByEmail(model.Username);
+                //TODO: Check if model value is Email or plain text(username);
+                User user;
+                if(model.Username != "Email") {
+                    user = await _userService.GetUserByUserName(model.Username);
+                } else {
+                    user = await _userService.GetUserByEmail(model.Username);
+                }
+
+                if(user == null) return View(model);        //Unable to find user with email/username
+
                 if(await _userService.ValidatePasswordAsync(user, model.Password)) {                    
                   await SignInUser(user.UserName);            
 

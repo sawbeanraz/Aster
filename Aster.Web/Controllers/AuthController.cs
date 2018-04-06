@@ -46,7 +46,7 @@ namespace Aster.Web.Controllers {
 
                 //TODO: Check if model value is Email or plain text(username);
                 User user;
-                if(model.Username != "Email") {
+                if(model.Username == "USERNAME") {
                     user = await _userService.GetUserByUserName(model.Username);
                 } else {
                     user = await _userService.GetUserByEmail(model.Username);

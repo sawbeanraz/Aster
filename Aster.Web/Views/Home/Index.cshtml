@@ -74,6 +74,19 @@
 </div>
 
 <div class="row">
+    <div class="col-sm-12">
+        <h1>Localization Plural Test</h1>
+        <p>
+            @Plural("There is one book. {1}", "There are {0} books. {1}", 1, "One book message")
+            <br />
+            @Plural("There is one book. {1}", "There are {0} books. {1}", 2, "Two book message")
+            <br />
+            @Plural("There is one book. {1}", "There are {0} books. {1}", 100, "Hundred book message")
+        </p>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-md-3">
         <h2>Application uses</h2>
         <ul>            

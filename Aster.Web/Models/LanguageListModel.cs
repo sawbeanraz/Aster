@@ -10,5 +10,8 @@ namespace Aster.Web.Models {
             LanguageList = new List<LanguageModel>();
         }
         public IList<LanguageModel> LanguageList { get; set; }
+
+        public string tempXml { get; set; }
+        public string tempJson { get; set; }
     }
 }

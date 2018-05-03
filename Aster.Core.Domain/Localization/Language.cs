@@ -16,5 +16,8 @@ namespace Aster.Core.Domain.Localization {
     
         public int Orders { get; set; }
 
+
+        public virtual IList<LocaleString> LocaleStrings { get; set; }
+
     }
 }

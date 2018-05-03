@@ -11,9 +11,13 @@ namespace Aster.Web.Controllers {
 
 
         private readonly ILanguageService _languageService;
+        private readonly ILocalizationService _localizationService;
 
-        public LanguageController(ILanguageService languageService) {
+        public LanguageController(
+            ILanguageService languageService,
+            ILocalizationService localizationService) {
             _languageService = languageService;
+            _localizationService = localizationService;
         }
 
 
@@ -34,6 +38,13 @@ namespace Aster.Web.Controllers {
                     Rtl = l.Rtl
                 });
             }
+
+            var french = await _languageService.GetLanguageById(2);
+
+            list.tempXml = await _localizationService.ExportToXml(french);
+
+            list.tempJson = await _localizationService.ExportToJson(french);
+
             return View(list);
         }
     }

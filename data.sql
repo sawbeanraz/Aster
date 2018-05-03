@@ -27,4 +27,26 @@ CREATE TABLE Languages (
 	LanguageCulture VARCHAR(10) NOT NULL,
 	Rtl BIT DEFAULT 0,
 	Enabled BIT DEFAULT 1, 
-	`Order` INT)
+	`Orders` INT)
+
+
+INSERT INTO Languages(Name, LanguageCulture, Rtl, Enabled, `Orders`)
+VALUES ('English', 'GB-en', 0, 1, 1)
+
+INSERT INTO Languages(`Name`, LanguageCulture, Rtl, Enabled, `Orders`)
+VALUES ('French', 'FR-fr', 0, 1, 1)
+
+
+CREATE TABLE LocaleStrings (
+  Id INT AUTO_INCREMENT PRIMARY KEY,
+  LanguageId INT, 
+  MsgId VARCHAR(1000) NOT NULL,
+  MsgStr VARCHAR(1000) NOT NULL,
+  FOREIGN KEY (LanguageId) REFERENCES Languages(Id)
+);
+
+
+INSERT INTO LocaleStrings(LanguageId, MsgId, MsgStr)
+VALUES(2, 'Hello', 'Bonjour');
+INSERT INTO LocaleStrings(LanguageId, MsgId, MsgStr)
+VALUES (2, 'Hello!! How are you?', 'Bonjour!! Comment allez-vous?');

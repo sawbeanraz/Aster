@@ -27,50 +27,49 @@ namespace Aster.Services.Localization {
             return await _localeRepository.GetByIdAsync(localeStringId);
         }
 
-        public async Task<LocaleString> GetLocaleString(string msgId) {
+        public async Task<LocaleString> GetLocaleString(string msgId, int languageId) {
             //TODO: get language from the context
             var query = from r in _localeRepository.List
                         orderby r.Id
-                        where r.MsgId == msgId && r.LanguageId == 1
+                        where r.MsgId == msgId && r.LanguageId == languageId
                         select r;
             var localeString = query.FirstOrDefault();
             return await Task.FromResult(localeString);
         }
 
-        public IList<LocaleString> GetLocaleStrings(Language language) {
+        public async Task<IList<LocaleString>> GetLocaleStrings(Language language) {
             var query = from r in _localeRepository.List
                         orderby r.MsgId
                         where r.LanguageId == language.Id
                         select r;
-            return query.ToList();
+            return await Task.FromResult(query.ToList());
         }
 
-        
+        public async Task InsertLocaleString(LocaleString localeString) {
+            await _localeRepository.InsertAsync(localeString);
+        }
 
-        public void InsertLocaleString(LocaleString localeString) {
+        public async Task UpdateLocaleString(LocaleString localeString) {
+            await _localeRepository.UpdateAsync(localeString);
+        }
+
+        public async Task<string> ExportToJson(Language language) {
+            await Task.Delay(100);
             throw new NotImplementedException();
         }
 
-        public void UpdateLocaleString(LocaleString localeString) {
+        public async Task<string> ExportToXml(Language language) {
+            await Task.Delay(100);
             throw new NotImplementedException();
         }
 
-
-
-        public string ExportToJson(Language language) {
+        public async Task<bool> ImportFromJson(Language language, string json) {
+            await Task.Delay(100);
             throw new NotImplementedException();
         }
 
-        public string ExportToXml(Language language) {
-            throw new NotImplementedException();
-        }
-
-
-        public bool ImportFromJson(Language language, string json) {
-            throw new NotImplementedException();
-        }
-
-        public bool ImportFromXml(Language language, string xml) {
+        public async Task<bool> ImportFromXml(Language language, string xml) {
+            await Task.Delay(100);
             throw new NotImplementedException();
         }
     }

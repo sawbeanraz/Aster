@@ -1,25 +1,24 @@
 ﻿using Aster.Core.Domain.Localization;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace Aster.Services.Localization {
     public interface ILocalizationService {
 
-        LocaleString GetLocaleString(int localeStringId);
-        LocaleString GetLocaleString(string msgId);
-        IList<LocaleString> GetLocaleStrings(Language language);
+        Task<LocaleString> GetLocaleString(int localeStringId);
+        Task<LocaleString> GetLocaleString(string msgId, int languageId);
+        Task<IList<LocaleString>> GetLocaleStrings(Language language);
 
 
-        void DeleteLocaleString(LocaleString localeString);
-        void InsertLocaleString(LocaleString localeString);
-        void UpdateLocaleString(LocaleString localeString);
+        Task DeleteLocaleString(LocaleString localeString);
+        Task InsertLocaleString(LocaleString localeString);
+        Task UpdateLocaleString(LocaleString localeString);
 
-        string ExportToXml(Language language);
-        string ExportToJson(Language language);
+        Task<string> ExportToXml(Language language);
+        Task<string> ExportToJson(Language language);
 
 
-        bool ImportFromXml(Language language, string xml);
-        bool ImportFromJson(Language language, string json);
+        Task<bool> ImportFromXml(Language language, string xml);
+        Task<bool> ImportFromJson(Language language, string json);
     }
 }

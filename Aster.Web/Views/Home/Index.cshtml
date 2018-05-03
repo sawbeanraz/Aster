@@ -68,8 +68,10 @@
 <div class="row">
     <div class="col-sm-12">
         <h1>Hello @Context.User.Identity.Name</h1>
-        <h2>@T("hello man")</h2>
+        <h2>@_("hello man")</h2>
         <h3></h3>
+        <h1>@_("hello")</h1>
+        <h1>@_("Hello!! How are you?");</h1>
     </div>
 </div>
 
@@ -77,11 +79,11 @@
     <div class="col-sm-12">
         <h1>Localization Plural Test</h1>
         <p>
-            @Plural("There is one book. {1}", "There are {0} books. {1}", 1, "One book message")
+            @__("There is one book. {1}", "There are {0} books. {1}", 1, "One book message")
             <br />
-            @Plural("There is one book. {1}", "There are {0} books. {1}", 2, "Two book message")
+            @__("There is one book. {1}", "There are {0} books. {1}", 2, "Two book message")
             <br />
-            @Plural("There is one book. {1}", "There are {0} books. {1}", 100, "Hundred book message")
+            @__("There is one book. {1}", "There are {0} books. {1}", 100, "Hundred book message")
         </p>
     </div>
 </div>
@@ -90,8 +92,8 @@
     <div class="col-md-3">
         <h2>Application uses</h2>
         <ul>            
-            <li>@T("Sample pages using ASP.NET Core MVC")</li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518004">@T("Bower")</a> @T("for managing client-side libraries")</li>
+            <li>@_("Sample pages using ASP.NET Core MVC")</li>
+            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518004">@_("Bower")</a> @_("for managing client-side libraries")</li>
             <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
         </ul>
     </div>

@@ -53,13 +53,9 @@ namespace Aster.Framework {
 
             builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerLifetimeScope();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
-
             builder.RegisterType<LanguageService>().As<ILanguageService>().InstancePerLifetimeScope();
-
+            builder.RegisterType<LocalizationService>().As<ILocalizationService>().InstancePerLifetimeScope();
 
         }
-
-
     }
-
 }

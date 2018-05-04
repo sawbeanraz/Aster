@@ -8,17 +8,18 @@ namespace Aster.Services.Localization {
         Task<LocaleString> GetLocaleString(int localeStringId);
         Task<LocaleString> GetLocaleString(string msgId, int languageId);
         Task<IList<LocaleString>> GetLocaleStrings(Language language);
+        Task<IList<LocaleString>> GetLocaleStrings(int languageId);
 
 
         Task DeleteLocaleString(LocaleString localeString);
         Task InsertLocaleString(LocaleString localeString);
         Task UpdateLocaleString(LocaleString localeString);
 
-        Task<string> ExportToXml(Language language);
-        Task<string> ExportToJson(Language language);
+        Task<string> ToXml(Language language);
+        Task<string> ToJson(Language language);
 
 
-        Task<bool> ImportFromXml(Language language, string xml);
-        Task<bool> ImportFromJson(Language language, string json);
+        Task<bool> ImportFromXml(string xml);
+        Task<bool> ImportFromJson(string json);
     }
 }

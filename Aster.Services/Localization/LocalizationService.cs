@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Aster.Core.Domain.Localization;
 using Aster.Data;
@@ -8,18 +7,22 @@ using System.Linq;
 using System.Xml.Linq;
 using Newtonsoft.Json;
 
+
 namespace Aster.Services.Localization {
     public class LocalizationService : ILocalizationService {
 
 
         private readonly IRepositoryAsync<LocaleString> _localeRepository;
+        private readonly ILanguageService _languageService;
         //private readonly ILogger _logger;
-
+        //private readonly ICacheService _cacheService;
         
-        public LocalizationService(IRepositoryAsync<LocaleString> localeRepository) {
+        public LocalizationService(
+            IRepositoryAsync<LocaleString> localeRepository,
+            ILanguageService languageService) {
             _localeRepository = localeRepository;
+            _languageService = languageService;
         }
-
 
         public async Task DeleteLocaleString(LocaleString localeString) {
             await _localeRepository.DeleteAsync(localeString);
@@ -40,9 +43,13 @@ namespace Aster.Services.Localization {
         }
 
         public async Task<IList<LocaleString>> GetLocaleStrings(Language language) {
+            return await GetLocaleStrings(language.Id);            
+        }
+
+        public async Task<IList<LocaleString>> GetLocaleStrings(int languageId) {
             var query = from r in _localeRepository.List
                         orderby r.MsgId
-                        where r.LanguageId == language.Id
+                        where r.LanguageId == languageId
                         select r;
             return await Task.FromResult(query.ToList());
         }
@@ -55,7 +62,7 @@ namespace Aster.Services.Localization {
             await _localeRepository.UpdateAsync(localeString);
         }
 
-        public async Task<string> ExportToJson(Language language) {
+        public async Task<string> ToJson(Language language) {
             if(language == null)
                 throw new ArgumentNullException(nameof(language));
 
@@ -68,7 +75,7 @@ namespace Aster.Services.Localization {
             
         }
 
-        public async Task<string> ExportToXml(Language language) {
+        public async Task<string> ToXml(Language language) {
             if(language == null)
                 throw new ArgumentNullException(nameof(language));
 
@@ -76,7 +83,7 @@ namespace Aster.Services.Localization {
 
             var xml  = new XElement("Language",
                 new XElement("Name", language.Name),
-                new XElement("Culture", language.LanguageCulture),
+                new XElement("LanguageCulture", language.LanguageCulture),
                 new XElement("Rtl", language.Rtl),
                 new XElement("LocaleStrings", 
                     language.LocaleStrings.Select(l =>
@@ -87,14 +94,107 @@ namespace Aster.Services.Localization {
             return await Task.FromResult(xml.ToString());
         }
 
-        public async Task<bool> ImportFromJson(Language language, string json) {
-            await Task.Delay(100);
-            throw new NotImplementedException();
+
+        public async Task<bool> ImportFromJson(string json) {
+            try {
+                var languageFromJson = JsonConvert.DeserializeObject<Language>(json);
+
+                await InsertUpdateLanguage(new Language() {
+                    Name = languageFromJson.Name,
+                    LanguageCulture = languageFromJson.LanguageCulture,
+                    Rtl = languageFromJson.Rtl,
+                    Enabled = true,
+                    Orders = languageFromJson.Orders
+                }, languageFromJson.LocaleStrings);
+
+                return true;
+            } catch (Exception e) {
+                throw e;
+            }
         }
 
-        public async Task<bool> ImportFromXml(Language language, string xml) {
-            await Task.Delay(100);
-            throw new NotImplementedException();
+        public async Task<bool> ImportFromXml(string xml) {
+            try {
+                var _language = XElement.Parse(xml);
+
+                var localeStrings =
+                    from e in _language.Element("LocaleStrings").Descendants("LocaleString")
+                    select new LocaleString {
+                        MsgId = (string)e.Element("MsgId"),
+                        MsgStr = (string)e.Element("MsgStr")
+                    };
+
+                var languageFromXml = new Language() {
+                    Name = (string)_language.Element("Name"),
+                    LanguageCulture = (string)_language.Element("LanguageCulture"),
+                    Rtl = (bool)_language.Element("Rtl")
+                };
+
+                await InsertUpdateLanguage(new Language() {
+                    Name = (string)_language.Element("Name"),
+                    LanguageCulture = (string)_language.Element("LanguageCulture"),
+                    Rtl = (bool)_language.Element("Rtl")
+                }, localeStrings.ToList());
+
+                return true;
+            } catch (Exception ex) {
+                //TODO: ILogger
+                throw ex;
+            }
+        }
+
+
+        private async Task InsertUpdateLanguage(Language language, IList<LocaleString> localeStrings) {
+
+            var lang = await _languageService.GetLanguageByName(language.Name);
+            if(lang == null) {
+                lang = new Language {
+                    Name = language.Name,
+                    LanguageCulture = language.LanguageCulture,
+                    Rtl = language.Rtl,
+                    Enabled = language.Enabled,
+                    Orders = language.Orders
+                };
+                await _languageService.InsertLanguage(lang);
+            } else {
+                lang.LanguageCulture = language.LanguageCulture;
+                lang.Rtl = language.Rtl;
+                lang.Orders = language.Orders;
+                lang.Enabled = language.Enabled;
+                await _languageService.UpdateLanguage(lang);
+            }
+            
+            var currentLocales = await GetLocaleStrings(lang.Id);
+            var newLocales = new List<LocaleString>();
+
+            foreach(var locale in localeStrings) {
+                var l = currentLocales.FirstOrDefault(x => x.MsgId == locale.MsgId);
+                if(l != null) {
+                    l.MsgStr = locale.MsgStr;
+                } else {
+                    newLocales.Add(new LocaleString {
+                        LanguageId = lang.Id,
+                        MsgId = locale.MsgId,
+                        MsgStr = locale.MsgStr
+                    });
+                }
+            }
+
+            await InsertLocaleStrings(newLocales);
+            await UpdateLocaleStrings(currentLocales);
+        }
+
+
+        private async Task InsertLocaleStrings(IList<LocaleString> localeStrings) {
+            foreach(var l in localeStrings) {
+                await InsertLocaleString(l);
+            }            
+        }
+
+        private async Task UpdateLocaleStrings(IList<LocaleString> localeStrings) {
+            foreach(var l in localeStrings) {
+                await UpdateLocaleString(l);
+            }
         }
     }
 }

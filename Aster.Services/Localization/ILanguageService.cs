@@ -9,8 +9,10 @@ namespace Aster.Services.Localization {
 
         Task<IList<Language>> GetLanguages();
         Task<Language> GetLanguageById(int Id);
-        Task<bool> SaveLanguage(Language language);
-        Task<bool> DeleteLanguage(Language language);
-        Task<bool> DeleteLanguageById(int languageId);        
+        Task<Language> GetLanguageByName(string Name);
+        Task InsertLanguage(Language language);
+        Task UpdateLanguage(Language language);
+        Task DeleteLanguage(Language language);
+        Task DeleteLanguageById(int languageId);        
     }
 }

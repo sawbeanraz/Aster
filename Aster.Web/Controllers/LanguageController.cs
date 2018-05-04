@@ -41,10 +41,66 @@ namespace Aster.Web.Controllers {
 
             var french = await _languageService.GetLanguageById(2);
 
-            list.tempXml = await _localizationService.ExportToXml(french);
+            var canadianFrench = new Aster.Core.Domain.Localization.Language() {
+                Name = "Canadian French",
+                LanguageCulture = "CA-fr",
+                Rtl = false
+            };
 
-            list.tempJson = await _localizationService.ExportToJson(french);
 
+            canadianFrench.LocaleStrings = new List<Aster.Core.Domain.Localization.LocaleString>() {
+                new Core.Domain.Localization.LocaleString{ MsgId = "Hello", MsgStr = "K chha daka"},
+                new Core.Domain.Localization.LocaleString{ MsgId = "How are you", MsgStr = "K chha halkhabar" }
+            };
+
+            
+            list.tempXml = await _localizationService.ToXml(french);
+
+            list.tempJson = await _localizationService.ToJson(french);
+
+
+            string json = await _localizationService.ToJson(canadianFrench);
+            json = @"{
+  ""Name"": ""Canadian French"",
+  ""LanguageCulture"": ""FR-fr"",
+  ""Rtl"": false,
+  ""Enabled"": true,
+  ""Orders"": 1,
+  ""LocaleStrings"": [
+    {
+      ""LanguageId"": 2,
+      ""MsgId"": ""Hello"",
+      ""MsgStr"": ""asdfhasdkjfha skdjfhCanadian Bonjour"",
+      ""Id"": 1
+    },
+    {
+      ""LanguageId"": 2,
+      ""MsgId"": ""Hello!! How are you?"",
+      ""MsgStr"": ""askdfh aksjdfh aksjdhf Canadian Bonjour!! Comment allez-vous?"",
+      ""Id"": 2
+    }
+  ]  
+}";
+            await _localizationService.ImportFromJson(json);
+
+
+            var xmlString = @"<Language>
+  <Name>Hamro French</Name>
+  <LanguageCulture>HH-fr</LanguageCulture>
+  <Rtl>false</Rtl>
+  <LocaleStrings>
+    <LocaleString>
+      <MsgId>Hello</MsgId>
+      <MsgStr>Bonjour</MsgStr>
+    </LocaleString>
+    <LocaleString>
+      <MsgId>Hello!! How are you?</MsgId>
+      <MsgStr>Bonjour!! Comment allez-vous?</MsgStr>
+    </LocaleString>
+  </LocaleStrings>
+</Language>";
+
+            await _localizationService.ImportFromXml(xmlString);
             return View(list);
         }
     }

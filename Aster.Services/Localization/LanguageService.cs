@@ -19,33 +19,28 @@ namespace Aster.Services.Localization {
         }
 
 
-        public async Task<bool> DeleteLanguage(Language language) {
+        public async Task DeleteLanguage(Language language) {
 
             if(language == null)
                 throw new ArgumentNullException(nameof(language));
 
             try {
                 await _languageRepository.DeleteAsync(language);
-
-
                 //TODO: event notification language deleted
                 //_eventPublisher.EntityDeleted(language);
-
-                return true;
             } catch (Exception ex) {
                 //TODO: Log error 
                 throw ex;
             }
         }
 
-        public async Task<bool> DeleteLanguageById(int languageId) {
+        public async Task DeleteLanguageById(int languageId) {
             if(languageId <= 0)
                 throw new ArgumentOutOfRangeException(nameof(languageId));
 
             try {
                 var language = await _languageRepository.GetByIdAsync(languageId);
-                await _languageRepository.DeleteAsync(language);
-                return true;
+                await _languageRepository.DeleteAsync(language);                
             } catch(Exception ex) {
                 //TODO: Log Error
                 throw ex;
@@ -60,6 +55,12 @@ namespace Aster.Services.Localization {
                 throw ex;
             }
         }
+        public async Task<Language> GetLanguageByName(string Name) {
+            var query = from l in _languageRepository.List
+                        where l.Name == Name
+                        select l;
+            return await Task.FromResult(query.FirstOrDefault());
+        }
 
         public async Task<IList<Language>> GetLanguages() {
             try {
@@ -71,24 +72,20 @@ namespace Aster.Services.Localization {
             }
         }
 
-        public async Task<bool> SaveLanguage(Language language) {
+        public async Task InsertLanguage(Language language) {
             if(language == null)
                 throw new ArgumentNullException(nameof(language));
 
-            try {
+            await _languageRepository.InsertAsync(language);
+            //TODO: Dispatch Event for New Language
+        }
 
-                if(language.Id <= 0) {
-                    //Insert
-                    await _languageRepository.InsertAsync(language);
-                } else {
-                    //Update
-                    await _languageRepository.UpdateAsync(language);
-                }
-                return true;
-            } catch(Exception ex) {
-                //TODO: Log Error
-                throw ex;
-            }
+        public async Task UpdateLanguage(Language language) {
+            if(language == null)
+                throw new ArgumentException(nameof(language));
+
+            await _languageRepository.UpdateAsync(language);
+            //TODO: Dispatch Event for Language Update
         }
     }
 }

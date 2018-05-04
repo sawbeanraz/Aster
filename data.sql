@@ -50,3 +50,17 @@ INSERT INTO LocaleStrings(LanguageId, MsgId, MsgStr)
 VALUES(2, 'Hello', 'Bonjour');
 INSERT INTO LocaleStrings(LanguageId, MsgId, MsgStr)
 VALUES (2, 'Hello!! How are you?', 'Bonjour!! Comment allez-vous?');
+
+
+
+CREATE TABLE Logs(
+	Id INT AUTO_INCREMENT PRIMARY KEY,
+	LogLevelId INT NOT NULL,
+	ShortMessage VARCHAR(255) NOT NULL,
+	FullMessage VARCHAR(2500) NULL,
+	Ip VARCHAR(20),
+	PageUrl VARCHAR(500),
+	ReferrerUrl VARCHAR(500),
+	CreatedOnUtc DATETIME NOT NULL,
+	Reference VARCHAR(200)
+);

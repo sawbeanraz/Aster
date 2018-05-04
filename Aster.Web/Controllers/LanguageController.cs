@@ -79,7 +79,7 @@ namespace Aster.Web.Controllers {
       ""MsgStr"": ""askdfh aksjdfh aksjdhf Canadian Bonjour!! Comment allez-vous?"",
       ""Id"": 2
     }
-  ]  
+  ]
 }";
             await _localizationService.ImportFromJson(json);
 

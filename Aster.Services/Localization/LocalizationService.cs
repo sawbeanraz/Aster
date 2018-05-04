@@ -6,7 +6,7 @@ using Aster.Data;
 using System.Linq;
 using System.Xml.Linq;
 using Newtonsoft.Json;
-
+using Aster.Logging;
 
 namespace Aster.Services.Localization {
     public class LocalizationService : ILocalizationService {
@@ -14,14 +14,17 @@ namespace Aster.Services.Localization {
 
         private readonly IRepositoryAsync<LocaleString> _localeRepository;
         private readonly ILanguageService _languageService;
-        //private readonly ILogger _logger;
+        private readonly ILogger _logger;
         //private readonly ICacheService _cacheService;
-        
+
         public LocalizationService(
             IRepositoryAsync<LocaleString> localeRepository,
-            ILanguageService languageService) {
+            ILanguageService languageService,
+            ILogger logger) {
+
             _localeRepository = localeRepository;
             _languageService = languageService;
+            _logger = logger;
         }
 
         public async Task DeleteLocaleString(LocaleString localeString) {
@@ -39,7 +42,12 @@ namespace Aster.Services.Localization {
                         where r.MsgId == msgId && r.LanguageId == languageId
                         select r;
             var localeString = query.FirstOrDefault();
-            return await Task.FromResult(localeString);
+            if(localeString != null) {
+                return await Task.FromResult(localeString);
+            } else {
+                _logger.Warn($"LocaleString ${msgId} not found");
+                return null;
+            }
         }
 
         public async Task<IList<LocaleString>> GetLocaleStrings(Language language) {
@@ -109,6 +117,7 @@ namespace Aster.Services.Localization {
 
                 return true;
             } catch (Exception e) {
+                _logger.Error("Unable to import from json", e);
                 throw e;
             }
         }
@@ -138,7 +147,7 @@ namespace Aster.Services.Localization {
 
                 return true;
             } catch (Exception ex) {
-                //TODO: ILogger
+                _logger.Error("Unable to Import from Xml", ex);
                 throw ex;
             }
         }

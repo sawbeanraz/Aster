@@ -6,6 +6,7 @@ using Aster.Framework.Infrastructure.DependencyManagement;
 using Aster.Services.Users;
 using Aster.Services.Security;
 using Aster.Services.Localization;
+using Aster.Logging;
 
 namespace Aster.Framework {
 
@@ -51,6 +52,7 @@ namespace Aster.Framework {
 
             builder.RegisterGeneric(typeof(EFRepository<>)).As(typeof(IRepositoryAsync<>)).InstancePerLifetimeScope();
 
+            builder.RegisterType<DatabaseLogger>().As<ILogger>().InstancePerLifetimeScope();
             builder.RegisterType<EncryptionService>().As<IEncryptionService>().InstancePerLifetimeScope();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
             builder.RegisterType<LanguageService>().As<ILanguageService>().InstancePerLifetimeScope();

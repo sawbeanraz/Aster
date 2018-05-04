@@ -2,6 +2,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Aster.Core.Domain\Aster.Core.Domain.csproj" />
     <ProjectReference Include="..\Aster.Data\Aster.Data.csproj" />
+    <ProjectReference Include="..\Aster.Logging\Aster.Logging.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.0.1" />

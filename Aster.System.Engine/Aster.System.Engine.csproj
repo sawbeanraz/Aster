@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aster.Framework\Aster.Framework.csproj" />
+    <ProjectReference Include="..\Aster.System.Abstractions\Aster.System.Abstractions.csproj" />
+    <ProjectReference Include="..\Aster.Utils.TypeFinder\Aster.Utils.TypeFinder.csproj" />
+  </ItemGroup>
+
+</Project>

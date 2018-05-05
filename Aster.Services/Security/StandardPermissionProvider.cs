@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Aster.Core.Domain.Security;
 
@@ -12,7 +13,7 @@ namespace Aster.Services.Security {
 
         public IEnumerable<PermissionRecord> GetPermissions()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

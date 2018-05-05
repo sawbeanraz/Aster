@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Aster.Logging {
+namespace Aster.System.Logging {
     public interface ILogger {
 
         void DeleteLog(Log log);
@@ -13,7 +12,7 @@ namespace Aster.Logging {
         void ClearLog();
 
         Task<IList<Log>> GetLogs(DateTime? fromUtc = null, DateTime? toUtc = null,
-            string message = "", LogLevel? logLevel = null); //TODO 
+            string message = "", LogLevel? logLevel = null);
 
         Task<Log> GetLogById(int logId);
 

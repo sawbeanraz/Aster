@@ -1,4 +1,4 @@
-﻿using Aster.Logging;
+﻿using Aster.System.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

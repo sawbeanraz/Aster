@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 
@@ -37,7 +38,7 @@ namespace Aster.Framework.TypeFinder
         /// <returns>The physical path. E.g. "c:\inetpub\wwwroot\bin"</returns>
         public virtual string GetBinDirectory()
         {
-            return System.AppContext.BaseDirectory;
+            return AppContext.BaseDirectory;
         }
 
         /// <summary>

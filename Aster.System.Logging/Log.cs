@@ -1,9 +1,7 @@
-﻿using Aster.Data;
+﻿using Aster.System.Data;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Aster.Logging {
+namespace Aster.System.Logging {
     public class Log : BaseEntity {
         public int LogLevelId { get; set; }
 
@@ -22,7 +20,8 @@ namespace Aster.Logging {
         public LogLevel LogLevel {
             get {
                 return (LogLevel)LogLevelId;
-            } set {
+            }
+            set {
                 LogLevelId = (int)value;
             }
         }

@@ -1,4 +1,5 @@
 using Aster.Data;
+using System;
 
 namespace Aster.Data.EntityFramework {
 
@@ -9,15 +10,15 @@ namespace Aster.Data.EntityFramework {
     public bool BackupSupported => false;
 
     public void InitConnectionFactory() {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
     public void InitDatabase() {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
 
     public void SetDatabaseInitializer() {
-      throw new System.NotImplementedException();
+      throw new NotImplementedException();
     }
   }
 }

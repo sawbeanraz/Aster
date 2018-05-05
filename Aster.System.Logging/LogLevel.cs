@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Aster.Logging {
+namespace Aster.System.Logging {
     public enum LogLevel {
         Debug = 10,
         Information = 20,

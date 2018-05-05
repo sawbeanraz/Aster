@@ -6,7 +6,7 @@ using Aster.Framework.Infrastructure.DependencyManagement;
 using Aster.Services.Users;
 using Aster.Services.Security;
 using Aster.Services.Localization;
-using Aster.Logging;
+using Aster.System.Logging;
 
 namespace Aster.Framework {
 

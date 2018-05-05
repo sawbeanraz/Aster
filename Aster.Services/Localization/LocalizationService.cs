@@ -6,7 +6,7 @@ using Aster.Data;
 using System.Linq;
 using System.Xml.Linq;
 using Newtonsoft.Json;
-using Aster.Logging;
+using Aster.System.Logging;
 
 namespace Aster.Services.Localization {
     public class LocalizationService : ILocalizationService {

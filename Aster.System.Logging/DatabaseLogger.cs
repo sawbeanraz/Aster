@@ -1,11 +1,11 @@
-﻿using Aster.Data;
+﻿using Aster.System.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aster.Logging {
+namespace Aster.System.Logging {
     public class DatabaseLogger : ILogger {
 
         private readonly IRepositoryAsync<Log> _logRepository;
@@ -18,7 +18,7 @@ namespace Aster.Logging {
             var logs = _logRepository.List.ToList();
             foreach(var log in logs) {
                 _logRepository.DeleteAsync(log);
-            }            
+            }
         }
 
         public void DeleteLog(Log log) {
@@ -57,10 +57,10 @@ namespace Aster.Logging {
 
             q = q.OrderByDescending(l => l.CreatedOnUtc);
 
-            return await Task.FromResult(q.ToList());            
+            return await Task.FromResult(q.ToList());
         }
 
-        public async Task<Log> InsertLog(LogLevel logLevel, string shortMessage, string fullMessage = "", string reference = null) {            
+        public async Task<Log> InsertLog(LogLevel logLevel, string shortMessage, string fullMessage = "", string reference = null) {
             return await _logRepository.InsertAsync(new Log {
                 LogLevel = logLevel,
                 ShortMessage = shortMessage,

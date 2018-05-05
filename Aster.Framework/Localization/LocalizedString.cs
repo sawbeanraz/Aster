@@ -8,13 +8,14 @@ namespace Aster.Framework.Localization {
 
         private readonly string _localized;
 
-
         public LocalizedString(string localized) : base(localized) {
             _localized = localized;
         }
 
         public string Text {
-            get { return _localized; }
+            get { return Localized; }
         }
+
+        public string Localized => _localized;
     }
 }

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aster.System.Data\Aster.System.Data.csproj" />
+    <ProjectReference Include="..\Aster.System.Logging\Aster.System.Logging.csproj" />
+  </ItemGroup>
+
+</Project>

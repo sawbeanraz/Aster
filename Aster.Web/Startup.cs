@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using Aster.Framework.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Aster.Web.Framework;
 
 
 namespace Aster.Web {

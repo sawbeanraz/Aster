@@ -7,9 +7,8 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Aster.Framework\Aster.Framework.csproj" />
     <ProjectReference Include="..\Aster.Services\Aster.Services.csproj" />
-    <ProjectReference Include="..\Aster.Core.Domain\Aster.Core.Domain.csproj" />    
+    <ProjectReference Include="..\Aster.Web.Framework\Aster.Web.Framework.csproj" />    
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />

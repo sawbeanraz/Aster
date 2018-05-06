@@ -18,23 +18,22 @@ CREATE TABLE PermissionRecords (
   `Name` VARCHAR(200) NOT NULL,
   Portal VARCHAR(200) NOT NULL,
   Category VARCHAR(200) NOT NULL
-)
+);
 
 
 CREATE TABLE Languages (
 	Id INT AUTO_INCREMENT PRIMARY KEY,
-	`Name` VARCHAR(100)	 NOT NULL,
+	`Name` VARCHAR(100)	NOT NULL,
 	LanguageCulture VARCHAR(10) NOT NULL,
-	Rtl BIT DEFAULT 0,
-	Enabled BIT DEFAULT 1, 
-	`Orders` INT)
+	RightToLeft BIT DEFAULT 0,
+	`Enabled` BIT DEFAULT 1);
 
 
-INSERT INTO Languages(Name, LanguageCulture, Rtl, Enabled, `Orders`)
-VALUES ('English', 'GB-en', 0, 1, 1)
+INSERT INTO Languages(Name, LanguageCulture, RightToLeft, `Enabled`)
+VALUES ('English', 'GB-en', 0, 1);
 
-INSERT INTO Languages(`Name`, LanguageCulture, Rtl, Enabled, `Orders`)
-VALUES ('French', 'FR-fr', 0, 1, 1)
+INSERT INTO Languages(`Name`, LanguageCulture, RightToLeft, `Enabled`)
+VALUES ('French', 'FR-fr', 0, 1);
 
 
 CREATE TABLE LocaleStrings (

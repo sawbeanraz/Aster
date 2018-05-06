@@ -13,11 +13,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Aster.System.Abstractions\Aster.System.Abstractions.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.AspNetCore.Http.Abstractions">
-      <HintPath>..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.http.abstractions\2.0.2\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

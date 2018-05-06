@@ -1,5 +1,4 @@
-﻿using Aster.Framework.Infrastructure.DependencyManagement;
-using Aster.System.Abstractions;
+﻿using Aster.System.Abstractions;
 using Aster.Utils.TypeFinder;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;

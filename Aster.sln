@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aster.System.Localization",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aster.Web.Framework", "Aster.Web.Framework\Aster.Web.Framework.csproj", "{E9FD7CCA-1190-44C7-993F-F5B3C77F80B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aster.System.Mvc", "Aster.System.Mvc\Aster.System.Mvc.csproj", "{481796F7-D4FE-4CDA-AF2F-7BC9F4DBA9FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -260,6 +262,18 @@ Global
 		{E9FD7CCA-1190-44C7-993F-F5B3C77F80B1}.Release|x64.Build.0 = Release|Any CPU
 		{E9FD7CCA-1190-44C7-993F-F5B3C77F80B1}.Release|x86.ActiveCfg = Release|Any CPU
 		{E9FD7CCA-1190-44C7-993F-F5B3C77F80B1}.Release|x86.Build.0 = Release|Any CPU
+		{481796F7-D4FE-4CDA-AF2F-7BC9F4DBA9FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{481796F7-D4FE-4CDA-AF2F-7BC9F4DBA9FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{481796F7-D4FE-4CDA-AF2F-7BC9F4DBA9FE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{481796F7-D4FE-4CDA-AF2F-7BC9F4DBA9FE}.Debug|x64.Build.0 = Debug|Any CPU
+		{481796F7-D4FE-4CDA-AF2F-7BC9F4DBA9FE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{481796F7-D4FE-4CDA-AF2F-7BC9F4DBA9FE}.Debug|x86.Build.0 = Debug|Any CPU
+		{481796F7-D4FE-4CDA-AF2F-7BC9F4DBA9FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{481796F7-D4FE-4CDA-AF2F-7BC9F4DBA9FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{481796F7-D4FE-4CDA-AF2F-7BC9F4DBA9FE}.Release|x64.ActiveCfg = Release|Any CPU
+		{481796F7-D4FE-4CDA-AF2F-7BC9F4DBA9FE}.Release|x64.Build.0 = Release|Any CPU
+		{481796F7-D4FE-4CDA-AF2F-7BC9F4DBA9FE}.Release|x86.ActiveCfg = Release|Any CPU
+		{481796F7-D4FE-4CDA-AF2F-7BC9F4DBA9FE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -280,6 +294,7 @@ Global
 		{03149A2A-7E5E-42B8-A74A-99AE78147BC8} = {38976CF9-C4BD-4548-AFCC-DB95AEA602CA}
 		{6B589D00-1E9A-497B-A8DB-A0269E61A13D} = {5F09CE76-5236-407A-BECB-651795424EDE}
 		{DC413619-A2E2-440F-A143-5FE6A40EBBCE} = {38976CF9-C4BD-4548-AFCC-DB95AEA602CA}
+		{481796F7-D4FE-4CDA-AF2F-7BC9F4DBA9FE} = {38976CF9-C4BD-4548-AFCC-DB95AEA602CA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E7507BB4-9F61-4E24-B777-8E33EA324934}

@@ -5,8 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Aster.Data\Aster.Data.csproj" />
     <ProjectReference Include="..\Aster.System.Abstractions\Aster.System.Abstractions.csproj" />
+    <ProjectReference Include="..\Aster.System.Data\Aster.System.Data.csproj" />
+    <ProjectReference Include="..\Aster.Utils.TypeFinder\Aster.Utils.TypeFinder.csproj" />
   </ItemGroup>
 
 </Project>

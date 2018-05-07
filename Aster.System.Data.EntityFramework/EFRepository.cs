@@ -1,10 +1,9 @@
-﻿using Aster.Data;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Aster.System.Data;
 
 namespace Aster.System.Data.EntityFramework {
     public class EFRepository<T> : IRepositoryAsync<T> where T : BaseEntity {

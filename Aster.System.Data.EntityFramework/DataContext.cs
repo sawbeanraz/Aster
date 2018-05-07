@@ -1,5 +1,6 @@
 ﻿using Aster.Data;
 using Aster.System.Data.EntityFramework.DataProviders;
+using Aster.Utils.TypeFinder;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -34,12 +35,15 @@ namespace Aster.System.Data.EntityFramework {
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
 
-            var configurationTypes = Assembly.GetExecutingAssembly().GetTypes()
-              .Where(type => !string.IsNullOrEmpty(type.Namespace))
-              .Where(type => type.BaseType != null && type.BaseType.IsGenericType &&
-                type.BaseType.GetGenericTypeDefinition() == typeof(DbEntityConfiguration<>));
+            var efDataConfigurationTypes = new WebAppTypeFinder().GetAssemblies().Select(assembly => {
+                return assembly.GetTypes().Where(t => !string.IsNullOrEmpty(t.Namespace))
+                    .Where(t => t.BaseType != null && t.BaseType.IsGenericType &&
+                    t.BaseType.GetGenericTypeDefinition() == typeof(DbEntityConfiguration<>));
+            }).SelectMany(l => l);
 
-            foreach(var configType in configurationTypes) {
+
+
+            foreach(var configType in efDataConfigurationTypes) {
                 dynamic configInstance = Activator.CreateInstance(configType);
                 modelBuilder.ApplyConfiguration(configInstance);
             }

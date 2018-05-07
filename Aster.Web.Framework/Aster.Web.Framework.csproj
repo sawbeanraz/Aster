@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Aster.System.Authentication\Aster.System.Authentication.csproj" />
+    <ProjectReference Include="..\Aster.System.Data.EntityFramework\Aster.System.Data.EntityFramework.csproj" />
     <ProjectReference Include="..\Aster.System.Engine\Aster.System.Engine.csproj" />
+    <ProjectReference Include="..\Aster.System.Localization\Aster.System.Localization.csproj" />
+    <ProjectReference Include="..\Aster.System.Mvc\Aster.System.Mvc.csproj" />
+    <ProjectReference Include="..\Aster.Utils.Encryption\Aster.Utils.Encryption.csproj" />
   </ItemGroup>
 
 </Project>

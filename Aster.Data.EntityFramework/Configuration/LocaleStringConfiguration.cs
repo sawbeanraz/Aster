@@ -1,4 +1,4 @@
-﻿using Aster.Core.Domain.Localization;
+﻿using Aster.System.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;

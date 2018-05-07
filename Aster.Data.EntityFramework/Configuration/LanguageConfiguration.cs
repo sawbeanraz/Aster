@@ -1,12 +1,8 @@
-﻿using Aster.Core.Domain.Localization;
+﻿using Aster.System.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Aster.Data.EntityFramework.Configuration
-{
+namespace Aster.Data.EntityFramework.Configuration {
     public class LanguageConfiguration: DbEntityConfiguration<Language> {
 
         public override void Configure(EntityTypeBuilder<Language> entity) {

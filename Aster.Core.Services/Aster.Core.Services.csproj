@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Localization\" />
-    <Folder Include="NewFolder\" />
-    <Folder Include="Security\" />
+    <ProjectReference Include="..\Aster.Core.Domain\Aster.Core.Domain.csproj" />
+    <ProjectReference Include="..\Aster.System.Data\Aster.System.Data.csproj" />
+    <ProjectReference Include="..\Aster.Utils.Encryption\Aster.Utils.Encryption.csproj" />
   </ItemGroup>
 
 </Project>

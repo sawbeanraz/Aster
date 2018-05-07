@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Aster.Services.Localization;
+using Aster.System.Localization;
 using Aster.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,24 +31,23 @@ namespace Aster.Web.Controllers {
                     Id = l.Id,
                     Name = l.Name,
                     LanguageCulture = l.LanguageCulture,
-                    Enabled = l.Enabled,
-                    Orders = l.Orders,
-                    Rtl = l.Rtl
+                    Enabled = l.Enabled,                    
+                    Rtl = l.RightToLeft
                 });
             }
 
             var french = await _languageService.GetLanguageById(2);
 
-            var canadianFrench = new Aster.Core.Domain.Localization.Language() {
+            var canadianFrench = new Language() {
                 Name = "Canadian French",
                 LanguageCulture = "CA-fr",
-                Rtl = false
+                RightToLeft = false
             };
 
 
-            canadianFrench.LocaleStrings = new List<Aster.Core.Domain.Localization.LocaleString>() {
-                new Core.Domain.Localization.LocaleString{ MsgId = "Hello", MsgStr = "K chha daka"},
-                new Core.Domain.Localization.LocaleString{ MsgId = "How are you", MsgStr = "K chha halkhabar" }
+            canadianFrench.LocaleStrings = new List<LocaleString>() {
+                new LocaleString{ MsgId = "Hello", MsgStr = "K chha daka"},
+                new LocaleString{ MsgId = "How are you", MsgStr = "K chha halkhabar" }
             };
 
             

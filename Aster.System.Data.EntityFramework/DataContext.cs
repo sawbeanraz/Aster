@@ -1,13 +1,11 @@
-﻿using Aster.Data;
-using Aster.System.Data.EntityFramework.DataProviders;
-using Aster.Utils.TypeFinder;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Aster.Utils.TypeFinder;
+using Aster.System.Data.EntityFramework.DataProviders;
 
 namespace Aster.System.Data.EntityFramework {
     public class DataContext : DbContext, IDbContext {

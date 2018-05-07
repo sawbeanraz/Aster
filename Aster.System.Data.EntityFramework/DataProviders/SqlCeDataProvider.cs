@@ -1,7 +1,4 @@
-﻿using Aster.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace Aster.System.Data.EntityFramework.DataProviders {
     public class SqlCeDataProvider : IDataProvider {

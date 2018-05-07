@@ -1,9 +1,4 @@
-﻿using Aster.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Aster.System.Data.EntityFramework.DataProviders {
+﻿namespace Aster.System.Data.EntityFramework.DataProviders {
     public class MySqlDataProvider : IDataProvider {
         public bool StoredProcedureSupported => true;
 

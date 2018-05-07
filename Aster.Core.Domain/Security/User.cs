@@ -1,10 +1,7 @@
-﻿using Aster.Data;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Aster.System.Data;
 
 namespace Aster.Core.Domain.Security {
-    
+
     public class User : BaseEntity {
 
         public User() { }

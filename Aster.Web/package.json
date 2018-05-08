@@ -1,0 +1,16 @@
+{
+  "name": "Aster.Web",
+  "version": "1.0.1",
+  "description": "packages for Aster.Web front-end",
+  "main": "index.js",
+  "author": "Aster Team",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1",
+    "jquery-validation": "^1.17.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}

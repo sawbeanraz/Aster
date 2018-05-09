@@ -17,55 +17,37 @@
 </head>
 <body>    
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Aster</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">                
-                <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">Home</a></li>
-                <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">About</a></li>
-                <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">Contact</a></li>                
-                @if(User.Identity.IsAuthenticated) {
-                    <li class="nav-item"><a asp-area="" asp-controller="Language" asp-action="Index" class="nav-link">Language</a></li>
-                    <li class="nav-item"><a asp-area="" asp-controller="Auth" asp-action="SignOut" class="nav-link">Sign Out</a></li>
-                } else {
-                    <li class="nav-item"><a asp-area="" asp-controller="Auth" asp-action="SignIn" class="nav-link">Sign In</a></li>
-                    <li class="nav-item"><a asp-area="" asp-controller="Auth" asp-action="Register" class="nav-link">Register</a> </li>
-                }
-            </ul>
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+        <div class="container">
+            <a class="navbar-brand" href="#">Aster</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="About" class="nav-link">About</a></li>
+                    <li class="nav-item"><a asp-area="" asp-controller="Home" asp-action="Contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="mt-2 mt-md-0">
+                    <ul class="navbar-nav">
+                        @if(User.Identity.IsAuthenticated) {                            
+                            <li class="nav-item"><a asp-area="" asp-controller="Auth" asp-action="SignOut" class="nav-link">Sign Out</a></li>
+                        } else {
+                            <li class="nav-item"><a asp-area="" asp-controller="Auth" asp-action="SignIn" class="nav-link">Sign In</a></li>
+                            <li class="nav-item"><a asp-area="" asp-controller="Auth" asp-action="Register" class="nav-link">Register</a> </li>
+                        }
+                    </ul>
+                </div>                
+            </div>
         </div>
     </nav>
-
     @RenderBody()
-
-
-    <footer>
-        <p>&copy; 2017 - Aster.Web</p>
-    </footer>
-    <environment include="Development">
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
-    <environment exclude="Development">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery"
-                crossorigin="anonymous"
-                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
-                crossorigin="anonymous"
-                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
-
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; @DateTime.Now.Year.ToString() - Aster</p>
+        </div>
+    </footer>    
+    <script src="~/js/site.min.js" asp-append-version="true"></script>        
     @RenderSection("Scripts", required: false)
 </body>
 </html>

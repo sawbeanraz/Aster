@@ -1,4 +1,2 @@
 ﻿require('bootstrap');
 
-
-

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using Aster.Web.Framework;
-
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace Aster.Web {
     public class Startup {
@@ -45,7 +45,35 @@ namespace Aster.Web {
                 app.UseExceptionHandler("/Home/Error");
             }
 
+
+
+
+
+
+            //StaticFileOptions options = new StaticFileOptions();
+            //FileExtensionContentTypeProvider typeProvider = new FileExtensionContentTypeProvider();
+
+            //var mimes = new Dictionary<string, string> {
+            //    {".woff", "applicaiton/font-woff" },
+            //    {".woff2", "font/woff2" },
+            //    {".ttf", "application/font-sfnt" },
+            //    {".eot", "application/vnd.ms-fontobject" },
+            //    {".otf", "application/font-sfnt" },
+            //    {".svg", "image/svg+xml" }
+            //};
+
+            //foreach(var mime in mimes) {
+            //    if(!typeProvider.Mappings.ContainsKey(mime.Key))
+            //        typeProvider.Mappings.Add(mime.Key, mime.Value);
+            //}
+
+            //options.ContentTypeProvider = typeProvider;
+            //app.UseStaticFiles(options);
+
             app.UseStaticFiles();
+
+
+
 
             app.UseAuthentication();
 

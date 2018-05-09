@@ -9,30 +9,33 @@ module.exports = (env = {}) => {
             filename: './js/site.min.js',
         },
         module: {
-            rules: [
-                {
-                    test: /\.scss$/,
-                    use: [
-                        {
-                            loader: 'file-loader',
-                            options: {
-                                name: '[name].min.css',
-                                outputPath: './css/'
-                            }
-                        },
-                        {
-                            loader: 'extract-loader'
-                        },
-                        {
-                            loader: 'css-loader'
-                        },
-                        {
-                            loader: 'postcss-loader'
-                        },
-                        {
-                            loader: 'sass-loader'
+            rules: [{
+                test: /\.scss$/,
+                use: [{
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].min.css',
+                            outputPath: './css/'
                         }
-                    ]
+                    }, {
+                        loader: 'extract-loader'
+                    }, {
+                        loader: 'css-loader'
+                    }, {
+                        loader: 'postcss-loader'
+                    }, {
+                        loader: 'sass-loader'
+                    }
+                ]
+            }, {
+                    test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                    use: [{
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'fonts/'
+                        }
+                    }]
                 }
             ]
         },

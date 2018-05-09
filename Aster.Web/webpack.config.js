@@ -46,6 +46,7 @@ module.exports = (env = {}) => {
                 'window.jQuery': 'jquery',
                 Popper: ['popper.js', 'default']
             })
-        ]
+        ],
+        watch: true
     }
 }

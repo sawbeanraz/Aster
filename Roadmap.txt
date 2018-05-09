@@ -1,3 +1,152 @@
+-------------------System----------------------------------
+Aster.System.Abstractions
+	IEngine
+	IStartupConfiguration
+	IDependencyRegistar
+
+Aster.System.Data
+	BaseEntity
+	IDataProvider
+	IDbContenxt
+	IRepository
+	
+
+Aster.System.Engine
+	EngineContext
+	Engine: IEngine
+
+
+Aster.System.Authentication
+	Authentication: IStartup
+	Extentions: ConfigureAuthenticationService
+	CookieAuthenticationService: IAuthenticationService
+
+
+
+Aster.System.Data.EntityFramework	
+	Provider
+	DbConfiguration
+	EFRepository
+
+Aster.System.Logging
+	ILogging
+
+
+Aster.System.Permission (TODO)
+
+	PermissionRecord
+	IPermissionProvider
+	Permission: IPermission
+
+	Find List<T> with this prermission
+	FindList of permission for T
+
+	IList<T> Get(Permission Record r, Func<PermissionRecord, T>() f) {
+		
+		from q in List
+		where q.PermissionRecordId = r.Id
+		select q;
+
+		return List.Where(p => p.REcorrdId = r.Id)
+		.Select(p => f);
+
+	}
+
+Aster.System.Caching 
+Aster.System.Event
+Aster.System.Tasks (Jobs and Schedule)
+Aster.System.Plugin
+
+
+--------------Utilies --------------------------------
+Aster.Utils.TypeFinder 
+Aster.Utils.Encryption
+Aster.Utils.WebContextHelper
+Aster.Utils.Pdf
+Aster.Utils.Word
+
+
+
+-------------------------------BUSINESS LOGIC------------------------
+
+Aster.Core.Domain
+	User
+	Supplier
+ 	Contractors 	[Worker, Candidates, Locum]
+	Assignments	[Terms]
+	Contracts	[Contract Documents]
+	Clients
+	Suppliers
+	Timesheet
+	Invoice
+	Receivable
+	Payable
+	Payslips
+	Payr
+
+Aster.Core.Events
+	TimesheetApproved
+	InvoiceRaised
+	
+Aster.Core.Serivces
+	UserServices
+	TimesheetServices
+	CandidateServices
+	InvoiceService
+
+
+-----------------------WEB FRAMWORK ORCHERTRATOR ----------------------------------------------------------
+Aster.Web.Framework
+	ConfigureServices():   starts FrameworkEngine and Orchestrates all services
+		- Adds HttpContextAccessor
+		- Start Engine which then configures services using IDependencyRegister
+		- Task Manager Intialize and Start
+
+	SystemDependecyRegister with 0 order value
+		- Register Database and settings
+		- DataContext
+		- EFRepository
+		- Logger
+		- EncryptionService and other system services
+		- CacheManager
+		- EventManager (Register publisher, all subsciber and events)
+		- TaskManager
+		- PluginService
+
+	CoreDependencyRegister with 1 orde value
+		- UserService
+		- CandidateService
+		- TimesheetService
+		
+	Localization for Web which use System.Localization
+	AuthorizedAttribute for Web
+
+------------------- PRESENTATION LAYER -----------------------------------------------------------
+Aster.Web
+	Calls FrameworkConfiguration
+	Has Dependency of most of the system services
+	Start MVC 
+
+	
+	
+----------------- UNIT TESTING -------------------------------------------------------
+Aster.System.Tests (Includes test for all Aster.System.*)
+Aster.Utils.Tests (Includes tests for all Aster.Utils.*)
+Aster.Core.Tests (Includes tests for all Aster.Core.*)
+
+
+
+
+
+
+
+
+
+
+
+------------Old structure ------------------------
+
+
 
 Aster.Data consists of data abstractions (BaseEntity, IRepository, IDbContext, DataSettings, IDataProviders)
 

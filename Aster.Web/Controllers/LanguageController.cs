@@ -60,7 +60,7 @@ namespace Aster.Web.Controllers {
             json = @"{
   ""Name"": ""Canadian French"",
   ""LanguageCulture"": ""FR-fr"",
-  ""Rtl"": false,
+  ""RightToLeft"": false,
   ""Enabled"": true,
   ""Orders"": 1,
   ""LocaleStrings"": [
@@ -84,7 +84,7 @@ namespace Aster.Web.Controllers {
             var xmlString = @"<Language>
   <Name>Hamro French</Name>
   <LanguageCulture>HH-fr</LanguageCulture>
-  <Rtl>false</Rtl>
+  <RightToLeft>false</RightToLeft>
   <LocaleStrings>
     <LocaleString>
       <MsgId>Hello</MsgId>

@@ -1,27 +1,41 @@
 ﻿@model Aster.Web.Models.SignInModel
 @{
+    Layout = "~/Views/Shared/_Blank.cshtml";
     ViewData["Title"] = "SignIn";
 }
 
-<h2>SignIn</h2>
-
-
 @if(!ViewContext.ModelState.IsValid) {
-    <div asp-validation-summary="All" class="form-validation">
-
-    </div>
+    <div asp-validation-summary="All" class="form-validation"></div>
 }
 
-<form class="form-signin" asp-action="SignIn" asp-route-returnUrl="@Context.Request.Query["returnUrl"]">
-    <h1>Please enter username and password</h1>
+<form class="form-signin" asp-action="SignIn" asp-route-returnUrl="@Context.Request.Query["returnUrl"]">    
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        width="120px" height="120" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+        <g>
+            <g>
+                <path d="M360,224v-72c0-57.43-46.562-104-103.984-104C198.562,48,152,94.57,152,152v72H96v240h320V224H360z M168,152
+			        c0-48.523,39.484-88,88.016-88C304.531,64,344,103.477,344,152v72H168V152z M400,448H112V240h288V448z" />
+            </g>
+            <path d="M256,288c-17.673,0-32,14.327-32,32c0,14.91,10.198,27.439,24,30.992V384h16v-33.008c13.802-3.553,24-16.082,24-30.992
+		    C288,302.327,273.673,288,256,288z M256,336c-8.822,0-16-7.178-16-16s7.178-16,16-16s16,7.178,16,16S264.822,336,256,336z" />
+        </g>
+    </svg>
 
-    <label class="sr-only">Username</label>
-    <input type="text" class="form-control" placeholder="Username"
-           asp-for="Username" />
+    <h1 class="h3 mb-3 font-weight-normal">Please enter username and password</h1>
 
-    <label class="sr-only">Password</label>
+    <label for="Username" class="sr-only">Username</label>
+    <input type="text" class="form-control" placeholder="Username or Email"
+            asp-for="Username" required autofocus />
+
+    <label for="Password" class="sr-only">Password</label>
     <input type="password" class="form-control" placeholder="Password"
-           asp-for="Password" />
+            asp-for="Password" required />
 
-    <button class="btn btn-primary">Sign In</button>
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+
+    <button class="btn btn-primary btn-block">Sign In</button>
 </form>

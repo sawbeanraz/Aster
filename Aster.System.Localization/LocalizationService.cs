@@ -93,7 +93,7 @@ namespace Aster.System.Localization
             var xml = new XElement("Language",
                 new XElement("Name", language.Name),
                 new XElement("LanguageCulture", language.LanguageCulture),
-                new XElement("Rtl", language.RightToLeft),
+                new XElement("RightToLeft", language.RightToLeft),
                 new XElement("LocaleStrings",
                     language.LocaleStrings.Select(l =>
                     new XElement("LocaleString",

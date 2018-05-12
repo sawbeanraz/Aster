@@ -9376,3 +9376,7 @@ body {
   .footer p {
     margin-top: 0;
     margin-bottom: 0; }
+
+.main-container {
+  margin-top: 56px;
+  margin-bottom: 60px; }

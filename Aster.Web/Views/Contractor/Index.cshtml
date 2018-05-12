@@ -1,0 +1,18 @@
+﻿@model Aster.Web.Models.ContractorListModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container marketing">
+    <h2>Contractors</h2>
+
+    <table class="table table-bordered table-striped">
+        @foreach(var c in Model.contractors) {
+        <tr>
+            <td>@c.Id</td>
+            <td>@c.Forename</td>
+        </tr>
+    }
+    </table>
+</div>

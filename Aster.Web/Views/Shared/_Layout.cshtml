@@ -41,7 +41,9 @@
             </div>
         </div>
     </nav>
-    @RenderBody()
+    <main role="main" class="main-container">
+        @RenderBody()
+    </main>
     <footer class="footer">
         <div class="container">
             <p>&copy; @DateTime.Now.Year.ToString() - Aster</p>

@@ -1,4 +1,5 @@
-﻿using Aster.Core.Services.Users;
+﻿using Aster.Core.Services.Contractors;
+using Aster.Core.Services.Users;
 using Aster.System.Abstractions;
 using Autofac;
 using System;
@@ -12,6 +13,10 @@ namespace Aster.Web.Framework {
         public void Register(ContainerBuilder builder) {
 
             builder.RegisterType<UserService>().As<IUserService>()
+                .InstancePerLifetimeScope();
+
+
+            builder.RegisterType<ContractorService>().As<IContractorService>()
                 .InstancePerLifetimeScope();
         }
     }

@@ -1,15 +1,15 @@
-﻿/*@import "aster/variables"; 
-@import "aster/bootstrap4"; 
-
-@import "aster/font-awesome"; 
-@import "aster/underscores"; 
-
-@import "aster/main";*/
-
-
+﻿//Bootstrap 
 @import "~bootstrap/scss/bootstrap.scss";
 
-@import "aster/webfonts";
+//Font Awesome
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
+
+
+// Simple Line Icons
+$simple-line-font-path: '~simple-line-icons/fonts/';
+@import '~simple-line-icons/scss/simple-line-icons.scss';
+
 
 
 @import "./aster/signin";

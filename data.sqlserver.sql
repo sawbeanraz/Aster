@@ -90,3 +90,6 @@ CREATE TABLE Contractors (
 
 INSERT INTO Contractors (ReferenceNo, Forename, Middlename, Surname, DateOfBirth, Gender, NationalInsuranceNo, Address1, Address2, County, PostCode, ContactNo, Email, CreatedOnUtc, UpdatedOnUtc)
 VALUES('C000001','Mickey', NULL, 'Bell', '1980-01-01 00:00:00.000', 'Male', 'N2038JD29EJ', '1 Test Road', NULL, NULL, 'T3S1 0D', '0202 3839 293', 'test@hotmail.com', GETDATE(), GETDATE())
+
+INSERT INTO Contractors (ReferenceNo, Forename, Middlename, Surname, DateOfBirth, Gender, NationalInsuranceNo, Address1, Address2, County, PostCode, ContactNo, Email, CreatedOnUtc, UpdatedOnUtc)
+VALUES('C000001','Minny', NULL, 'Mousy', '1980-01-01 00:00:00.000', 'Female', 'EJ28E92J', '1 Test Road', NULL, NULL, 'T3S1 0D', '0202 3839 293', 'minney@hotmail.com', GETDATE(), GETDATE())

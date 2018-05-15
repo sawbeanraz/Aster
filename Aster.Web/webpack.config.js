@@ -55,6 +55,6 @@ module.exports = (env = {}) => {
                 Popper: ['popper.js', 'default']
             })
         ],
-        //watch: true
+        watch: true
     }
 }

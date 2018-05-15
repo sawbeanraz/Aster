@@ -4,15 +4,68 @@
 }
 
 
-<div class="container marketing">
-    <h2>Contractors</h2>
 
-    <table class="table table-bordered table-striped">
-        @foreach(var c in Model.contractors) {
-        <tr>
-            <td>@c.Id</td>
-            <td>@c.Forename</td>
-        </tr>
-    }
-    </table>
+
+<div class="container">
+    <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow bg-dark">
+        <div class="lh-100">
+            <h6 class="mb-0 text-white lh-100">Contractors</h6>
+            <small>List of contractors</small>
+        </div>
+    </div>
+
+
+    <div class="paper">
+
+
+        <div class="contractors-list">
+            <h5 class="contactor-list-header">
+                Search result
+            </h5>
+
+            @foreach(var c in Model.contractors) {
+            <div class="media text-muted pt-3">                
+                <div class="contractor-avatar">
+                    <i class="icon icon-user"></i>
+                </div>
+
+                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                    <span class="status status-active pull-right">
+                        <i class="fa fa-circle" style="color: red;"></i> Active
+                    </span>
+
+
+                    <strong class="d-block text-gray-dark">@c.ReferenceNo / @c.Forename @c.Surname </strong>
+
+
+                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+
+
+                    <br />
+                    <span class="docs">
+                        <span class="badge badge-pill badge-info">contracts</span>
+                        <span class="badge badge-pill badge-info">EE documents</span>
+                        <span class="badge badge-pill badge-info">Employement Document</span>
+                    </span>
+                    
+                    <br />
+
+
+
+                    <span class="timesheet">
+                        Timesheets
+                        <span class="badge badge-danger">2</span>
+                    </span>
+
+                    <span>Updated 28 days ago</span>
+                </p>
+            </div>
+            }
+            <small class="d-block text-right mt-3">
+                <a href="#">Search again</a>
+            </small>
+        </div>
+    </div>
+
+
 </div>

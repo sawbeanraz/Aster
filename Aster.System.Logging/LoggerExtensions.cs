@@ -32,7 +32,7 @@ namespace Aster.System.Logging {
             if(ex is ThreadAbortException) return;
 
             var fullMessage = ex?.ToString() ?? string.Empty;
-            logger.InsertLog(level, message, fullMessage, reference);
+            (logger.InsertLog(level, message, fullMessage, reference)).Wait();
         }
     }
 }

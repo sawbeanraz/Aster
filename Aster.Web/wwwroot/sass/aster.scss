@@ -1,22 +1,38 @@
-﻿/*@import "aster/variables"; 
-@import "aster/bootstrap4"; 
-
-@import "aster/font-awesome"; 
-@import "aster/underscores"; 
-
-@import "aster/main";*/
-
-
+﻿//Bootstrap 
 @import "~bootstrap/scss/bootstrap.scss";
 
-@import "aster/webfonts";
+//Font Awesome
+$fa-font-path: "~font-awesome/fonts";
+@import '~font-awesome/scss/font-awesome.scss';
+
+
+// Simple Line Icons
+$simple-line-font-path: '~simple-line-icons/fonts/';
+@import '~simple-line-icons/scss/simple-line-icons.scss';
+
 
 
 @import "./aster/signin";
 @import "./aster/carousel";
 
+@import './aster/paper';
+@import './aster/footer';
 
 
-body {
-    background-color:green;
+@import './aster/contractors';
+
+.fixed-top {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .5)
+}
+
+
+
+body { 
+    background-color: #f1f1f1;
+}
+
+
+.main-container {
+    margin-top: 76px;
+    margin-bottom: 60px;
 }

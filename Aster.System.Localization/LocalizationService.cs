@@ -46,7 +46,7 @@ namespace Aster.System.Localization
             if(localeString != null) {
                 return await Task.FromResult(localeString);
             } else {
-                _logger.Warn($"LocaleString ${msgId} not found");
+                _logger.Warn($"LocaleString {msgId} not found");
                 return null;
             }
         }

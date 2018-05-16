@@ -15,7 +15,7 @@ module.exports = (env = {}) => {
                         loader: 'file-loader',
                         options: {
                             name: '[name].min.css',
-                            outputPath: './css/'
+                            outputPath: 'css/'
                         }
                     }, {
                         loader: 'extract-loader'
@@ -28,14 +28,22 @@ module.exports = (env = {}) => {
                     }
                 ]
             }, {
-                    test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                    test: /\.(woff(2)?|ttf|eot|otf|svg)(\?v=\d+\.\d+\.\d+)?$/,
                     use: [{
-                        loader: 'file-loader',
-                        options: {
+                        loader: 'url-loader',
+                        options: {                            
                             name: '[name].[ext]',
                             outputPath: 'fonts/'
                         }
-                    }]
+                    }
+                    //, {
+                    //    loader: 'file-loader',
+                    //    options: {
+                    //        name: '[name].[ext]',
+                    //        outputPath: './fonts'
+                    //    }
+                        //}
+                    ]
                 }
             ]
         },
@@ -46,6 +54,7 @@ module.exports = (env = {}) => {
                 'window.jQuery': 'jquery',
                 Popper: ['popper.js', 'default']
             })
-        ]
+        ],
+        watch: true
     }
 }

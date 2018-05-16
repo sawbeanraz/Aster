@@ -9,7 +9,7 @@ CREATE TABLE Users (
 
 
 INSERT INTO Users (UserName, Email, PasswordHash, SecurityStamp, EmailConfirmed)
-VALUES('bean','srdx7@hotmail.com', 'test', 'CF6B43C5C1A960625B5B0D426FA50D2C222A6356', 1);
+VALUES('bean','srdx7@hotmail.com', 'CF6B43C5C1A960625B5B0D426FA50D2C222A6356', NULL, 1);
 
 
 

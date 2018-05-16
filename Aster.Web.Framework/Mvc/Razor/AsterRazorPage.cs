@@ -25,7 +25,7 @@ namespace Aster.Web.Framework.Mvc.Razor
                 if(_localizer == null) {
                     _localizer = (msgId, args) => {
 
-                        var localeString = _localizationService.GetLocaleString(msgId, 2).Result;
+                        var localeString = new LocaleString { MsgId = "Non Localization", MsgStr = "test no error" }; //_localizationService.GetLocaleString(msgId, 2).GetAwaiter().GetResult();
 
                         if(localeString == null) {
                             return new LocalizedString(msgId);
@@ -46,8 +46,8 @@ namespace Aster.Web.Framework.Mvc.Razor
                 if(_pluralizer == null) {
                     _pluralizer = (singular, plural, count, args) => {
                         var msgId = count == 1 ? singular : plural;
-                        var localeString = _localizationService.GetLocaleString(msgId, 2).Result;
-                        if(localeString == null) {
+                        var localeString = new LocaleString { MsgId = "Non Localization", MsgStr = "test no error" };//_localizationService.GetLocaleString(msgId, 2).Result;
+                        if (localeString == null) {
                             return new LocalizedString(string.Format(msgId, new object[] { count }.Concat(args).ToArray()));
 
                         } else {

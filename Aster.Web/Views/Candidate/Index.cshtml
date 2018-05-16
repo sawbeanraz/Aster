@@ -1,0 +1,12 @@
+﻿@model Aster.Web.Models.CandidatesModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+
+@foreach(var c in Model.Candidates)
+{
+    <li>@c.Name - @c.DOB.ToShortDateString()</li>    
+}

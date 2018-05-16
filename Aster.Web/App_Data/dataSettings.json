@@ -1,4 +1,5 @@
 ﻿{
-  "DataProvider": "mysql",
-  "DataConnectionString": "server=localhost;userid=useraster;password=mariapass;database=dbaster;SslMode=none;"
+  "DataProvider": "sqlserver",
+  "DataConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=AsterDB;Trusted_Connection=True;MultipleActiveResultSets=true"
+  
 }

@@ -1,9 +1,4 @@
 ﻿{
   "DataProvider": "sqlserver",
-<<<<<<< HEAD
-  "DataConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=AsterDB;Trusted_Connection=True;MultipleActiveResultSets=true"
-  
-=======
   "DataConnectionString": "Data Source=localhost;Initial Catalog=dbaster;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=StrongPassw0rd;MultipleActiveResultSets=True"
->>>>>>> 7bf30bca19e647fe74841342c59cc092554d7bd0
 }

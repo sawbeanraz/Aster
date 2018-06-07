@@ -1,8 +1,5 @@
-
-
 using Aster.Core.Services.Candidates;
-
-
+using Aster.Core.Services.Contractors;
 using Aster.Core.Services.Users;
 using Aster.System.Abstractions;
 using Autofac;
@@ -20,11 +17,9 @@ namespace Aster.Web.Framework {
                 .InstancePerLifetimeScope();
 
 
-            builder.RegisterType<CandidateService>().As<ICandidateService>()
+            builder.RegisterType<CandidateService>().As<ICandidateService>().InstancePerLifetimeScope();
 
-        //    builder.RegisterType<ContractorService>().As<IContractorService>()
-
-                .InstancePerLifetimeScope();
+            builder.RegisterType<ContractorService>().As<IContractorService>().InstancePerLifetimeScope();
         }
     }
 }

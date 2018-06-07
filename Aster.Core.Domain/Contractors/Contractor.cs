@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Aster.Core.Domain.Contractors {
     public class Contractor: BaseEntity {
-
+        
         public string ReferenceNo { get; set; }
         public string Forename { get; set; }
         public string Middlename { get; set; }

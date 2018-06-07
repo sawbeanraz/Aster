@@ -37,12 +37,20 @@ namespace Aster.Core.Services.Contractors {
 
         public async Task<Contractor> InsertContrator(Contractor contractor) {
 
+            if(contractor == null) throw new ArgumentNullException(typeof(Contractor).FullName);
+
+
             if (string.IsNullOrWhiteSpace(contractor.Forename.Trim())) 
-                throw new Exception("Forename can not be empty.");
+                throw new ArgumentException("Forename can not be blank.", typeof(Contractor).FullName);
 
             if(string.IsNullOrWhiteSpace(contractor.Surname.Trim()))
-                throw new Exception("Surname can not be empty.");
+                throw new ArgumentException("Surname can not be blank.", typeof(Contractor).FullName);
+
             
+            if(string.IsNullOrWhiteSpace(contractor.Gender.Trim())) {
+                throw new ArgumentException("Gender can not be blank.", typeof(Contractor).FullName);
+            }
+
 
             return await _contractorRepository.InsertAsync(contractor);
         }

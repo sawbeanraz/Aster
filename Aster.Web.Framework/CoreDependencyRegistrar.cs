@@ -19,7 +19,7 @@ namespace Aster.Web.Framework {
 
             builder.RegisterType<CandidateService>().As<ICandidateService>().InstancePerLifetimeScope();
 
-            builder.RegisterType<ContractorService>().As<IContractorService>().InstancePerLifetimeScope();
+            builder.RegisterType<ContractorService>().As<IContractorService>().InstancePerLifetimeScope();            
         }
     }
 }

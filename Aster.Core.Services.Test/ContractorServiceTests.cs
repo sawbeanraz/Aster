@@ -9,6 +9,9 @@ namespace Aster.Core.Services.Test {
         private readonly IContractorService contractorService;
         public ContractorServiceTests() {
             var _mock = new TestRepository<Contractor>(MockData).GetMockRepository();
+
+
+
             contractorService = new ContractorService(_mock.Object);
         }
 
@@ -50,6 +53,14 @@ namespace Aster.Core.Services.Test {
                 return new List<Contractor>() {
                     new Contractor { ReferenceNo ="test", Forename = "Mini", Surname = "Alpha", ContactNo = "12345678" },
                     new Contractor { ReferenceNo ="AlphaBETA", Forename = "Alpha", Surname = "Beta", ContactNo = "87654321" }
+                };
+            }
+        }
+
+        private List<ContractorBankAccount> MockAccounts {
+            get {
+                return new List<ContractorBankAccount>() {
+                    new ContractorBankAccount{ Id = 1, ContractorId = 1, AccountNumber = "asldkjf", BankAddress = ""}
                 };
             }
         }

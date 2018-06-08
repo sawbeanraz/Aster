@@ -10,11 +10,14 @@ namespace Aster.Core.Services.Contractors {
     public class ContractorService : IContractorService {
 
         private readonly IRepositoryAsync<Contractor> _contractorRepository;
+        private readonly IRepositoryAsync<ContractorBankAccount> _contractorBankAccountRepository;
 
         public ContractorService(
-            IRepositoryAsync<Contractor> contractorRespository) {
+            IRepositoryAsync<Contractor> contractorRespository,
+            IRepositoryAsync<ContractorBankAccount> contractorBankAccountRepository) {
 
             _contractorRepository = contractorRespository;
+            _contractorBankAccountRepository = contractorBankAccountRepository;
         }
 
         public async void DeleteContractor(Contractor contractor) {
@@ -28,12 +31,18 @@ namespace Aster.Core.Services.Contractors {
             return await Task.FromResult(q.FirstOrDefault());
         }
 
+        public async Task<Contractor> GetContractorById(int Id) {
+            return await _contractorRepository.GetByIdAsync(Id);
+        }
+
         public async Task<IList<Contractor>> GetContractors() {
             //TODO: Pagination
             var q = from c in _contractorRepository.List
-                    select c;
+                    select c;                        
             return await Task.FromResult(q.ToList());
         }
+
+        
 
         public async Task<Contractor> InsertContrator(Contractor contractor) {
 
@@ -58,5 +67,39 @@ namespace Aster.Core.Services.Contractors {
         public async void UpdateContractor(Contractor contractor) {
             await _contractorRepository.UpdateAsync(contractor);
         }
+
+
+
+
+
+        #region Contractor Bank Account
+        public void DeleteContractorBankAccount(ContractorBankAccount contractorBankAccount) {
+
+            _contractorBankAccountRepository
+                .DeleteAsync(contractorBankAccount);
+        }
+
+        public async Task<IList<ContractorBankAccount>> GetBankAccounts(int ContractorId) {
+
+            var q = from account in _contractorBankAccountRepository.List
+                    where account.ContractorId == ContractorId
+                    select account;
+
+            return await Task.FromResult(q.ToList());
+        }
+
+        public Task<ContractorBankAccount> InsertContractorBankAccount(ContractorBankAccount contractorBankAccount) {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateContractorBankAccount(ContractorBankAccount contractorBankAccount) {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateDefaultBankAccount(ContractorBankAccount contractorBankAccount) {
+            throw new NotImplementedException();
+        }
+        #endregion
+
     }
 }

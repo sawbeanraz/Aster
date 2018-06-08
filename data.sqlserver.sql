@@ -93,3 +93,20 @@ VALUES('C000001','Mickey', NULL, 'Bell', '1980-01-01 00:00:00.000', 'Male', 'N20
 
 INSERT INTO Contractors (ReferenceNo, Forename, Middlename, Surname, DateOfBirth, Gender, NationalInsuranceNo, Address1, Address2, County, PostCode, ContactNo, Email, CreatedOnUtc, UpdatedOnUtc)
 VALUES('C000001','Minny', NULL, 'Mousy', '1980-01-01 00:00:00.000', 'Female', 'EJ28E92J', '1 Test Road', NULL, NULL, 'T3S1 0D', '0202 3839 293', 'minney@hotmail.com', GETDATE(), GETDATE())
+
+
+
+
+CREATE TABLE ContractorBankAccounts (
+	Id INT NOT NULL IDENTITY(1,1),
+	ContractorId INT, 	
+	SortCode VARCHAR(20) NOT NULL,
+	AccountNumber VARCHAR(50) NOT NULL,
+	BankName VARCHAR(200) NOT NULL,
+	BankBranchName VARCHAR(200),
+	BankAddress VARCHAR(200),
+	[Default] BIT,	
+	CONSTRAINT PK_ContractorBankAccount PRIMARY KEY(Id),
+	FOREIGN KEY (ContractorId) REFERENCES Contractors(Id)
+)
+GO

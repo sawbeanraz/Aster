@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Aster.Core.Domain.Contractors {
-    public class Contractor: BaseEntity {
-        
+    public class Contractor : BaseEntity {
+
         public string ReferenceNo { get; set; }
         public string Forename { get; set; }
         public string Middlename { get; set; }
@@ -25,5 +25,8 @@ namespace Aster.Core.Domain.Contractors {
 
         public DateTime CreatedOnUtc { get; set; }
         public DateTime UpdatedOnUtc { get; set; }
+
+
+        public virtual List<ContractorBankAccount> BankAccounts { get; set;}
     }
 }

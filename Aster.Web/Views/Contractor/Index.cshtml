@@ -34,8 +34,9 @@
                         <i class="fa fa-circle" style="color: red;"></i> Active
                     </span>
 
-
-                    <strong class="d-block text-gray-dark">@c.ReferenceNo / @c.Forename @c.Surname </strong>
+                    <a asp-area="" asp-controller="contractor" asp-action="detail" asp-route-id="@c.Id">
+                        <strong class="d-block text-gray-dark">@c.ReferenceNo / @c.Forename @c.Surname </strong>
+                    </a>
 
 
                     Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
@@ -47,7 +48,7 @@
                         <span class="badge badge-pill badge-info">EE documents</span>
                         <span class="badge badge-pill badge-info">Employement Document</span>
                     </span>
-                    
+
                     <br />
 
 

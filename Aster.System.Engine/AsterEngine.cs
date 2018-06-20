@@ -1,7 +1,9 @@
 ﻿using Aster.System.Abstractions;
+using Aster.System.Mapper;
 using Aster.Utils.TypeFinder;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,11 +34,35 @@ namespace Aster.System.Engine {
             }
 
             //register auto mappers configurations
+            ConfigureAutoMapper(services, typeFinder);
 
             //Register Dependencies
             RegisterDependencies(services, typeFinder);
 
             return _serviceProvider;
+
+        }
+
+
+        public virtual void ConfigureAutoMapper(IServiceCollection services, ITypeFinder typeFinder) {
+            //Find all the aster mapper in the project
+            var mapConfigurations = typeFinder.FindClassesOfType<IAsterMapper>();
+
+
+            //create and sort instance of maps
+            var instances = mapConfigurations
+                .Select(mapConfiguration => (IAsterMapper)Activator.CreateInstance(mapConfiguration))
+                .OrderBy(mapConfiguration => mapConfiguration.Order);
+
+            var configs = new MapperConfiguration(config => {
+                foreach(var instance in instances) {
+                    config.AddProfile(instance.GetType());
+                }
+            });
+
+            services.AddAutoMapper();
+            AsterMapperConfiguration.Init(configs);
+
 
         }
 

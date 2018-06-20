@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Aster.Core.Services.Contractors;
+using Aster.Web.Mapper;
 using Aster.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,24 +26,7 @@ namespace Aster.Web.Controllers {
 
             var contractors = await _contractorService.GetContractors();
 
-            _list.contractors = contractors.Select(c => new ContractorModel {
-                Id = c.Id,
-                ReferenceNo = c.ReferenceNo,
-                Forename = c.Forename,
-                Middlename = c.Middlename,
-                Surname = c.Surname,
-                DateOfBirth = c.DateOfBirth,
-                Gender = c.Gender,
-                NationalInsuranceNo = c.NationalInsuranceNo,
-                Address1 = c.Address1,
-                Address2 = c.Address2,
-                County = c.County,
-                PostCode = c.PostCode,
-                ContactNo = c.ContactNo,
-                Email = c.Email,
-                CreatedOnUtc = c.CreatedOnUtc,
-                UpdatedOnUtc = c.UpdatedOnUtc
-            }).ToList();
+            _list.contractors = contractors.Select(c => c.ToModel() ).ToList();
 
 
             var test = await _contractorService.GetBankAccounts(1);
@@ -57,28 +41,8 @@ namespace Aster.Web.Controllers {
 
             var c = await _contractorService
                 .GetContractorById(Id);
-
-            var contractor = new ContractorModel() {
-                Id = c.Id,
-                ReferenceNo = c.ReferenceNo,
-                Forename = c.Forename,
-                Middlename = c.Middlename,
-                Surname = c.Surname,
-                DateOfBirth = c.DateOfBirth,
-                Gender = c.Gender,
-                NationalInsuranceNo = c.NationalInsuranceNo,
-                Address1 = c.Address1,
-                Address2 = c.Address2,
-                County = c.County,
-                PostCode = c.PostCode,
-                ContactNo = c.ContactNo,
-                Email = c.Email,
-                CreatedOnUtc = c.CreatedOnUtc,
-                UpdatedOnUtc = c.UpdatedOnUtc
-            };
-            
             return View(new ContractorDetailViewModel {
-                Contractor = contractor
+                Contractor = c.ToModel()
             });
         }
     }

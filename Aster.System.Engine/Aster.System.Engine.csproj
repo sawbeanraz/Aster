@@ -6,12 +6,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Aster.System.Abstractions\Aster.System.Abstractions.csproj" />
+    <ProjectReference Include="..\Aster.System.Mapper\Aster.System.Mapper.csproj" />
     <ProjectReference Include="..\Aster.Utils.TypeFinder\Aster.Utils.TypeFinder.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.2" />
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="4.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.0.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.0.1" />
   </ItemGroup>

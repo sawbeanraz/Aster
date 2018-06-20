@@ -22,8 +22,5 @@ namespace Aster.Web.Models {
 
         public string ContactNo { get; set; }
         public string Email { get; set; }
-
-        public DateTime CreatedOnUtc { get; set; }
-        public DateTime UpdatedOnUtc { get; set; }
     }
 }

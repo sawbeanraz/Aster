@@ -12,7 +12,7 @@ namespace Aster.Core.Services.Test {
 
 
 
-            contractorService = new ContractorService(_mock.Object);
+            contractorService = new ContractorService(_mock.Object, null);
         }
 
 

@@ -7,7 +7,7 @@ using System;
 namespace Aster.Web.Framework {
     public static class ServiceCollectionExtensions {
 
-        public static IServiceProvider ConfigureAsterServices(this IServiceCollection services, 
+        public static IServiceProvider ConfigureAsterServices(this IServiceCollection services,
             IConfigurationRoot configuration) {
 
             //TODO: Configurate Application Singleton configurations
@@ -31,5 +31,6 @@ namespace Aster.Web.Framework {
         public static void AddHttpContextAccessor(this IServiceCollection services) {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
+
     }
 }

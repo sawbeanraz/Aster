@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using Aster.Web.Framework;
 using Microsoft.AspNetCore.StaticFiles;
+using Aster.System.Engine;
+using Aster.System.Routing;
 
 namespace Aster.Web {
     public class Startup {
@@ -77,11 +79,16 @@ namespace Aster.Web {
 
             app.UseAuthentication();
 
-            app.UseMvc(routes => {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+
+            //Registerting all the routes defined in the system
+            //Move the the app builder to IAsterStartUp
+            app.UseMvc(routeBuilder => {
+                EngineContext.Current.Resolve<IRouteRegistrar>().RegisterRoutes(routeBuilder);
             });
+
+
+            
+
         }
     }
 }

@@ -19,4 +19,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Startup\" />
+  </ItemGroup>
+
 </Project>

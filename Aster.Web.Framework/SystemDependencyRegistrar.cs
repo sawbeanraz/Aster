@@ -3,6 +3,7 @@ using Aster.System.Data;
 using Aster.System.Data.EntityFramework;
 using Aster.System.Localization;
 using Aster.System.Logging;
+using Aster.System.Routing;
 using Aster.Utils.Encryption;
 using Autofac;
 using System;
@@ -56,6 +57,11 @@ namespace Aster.Web.Framework {
                 .InstancePerLifetimeScope();
             builder.RegisterType<LocalizationService>().As<ILocalizationService>()
                 .InstancePerLifetimeScope();
+
+
+
+            //Register Routes dynamically
+            builder.RegisterType<AsterRouteRegistrar>().As<IRouteRegistrar>().SingleInstance();
         }
 
     }

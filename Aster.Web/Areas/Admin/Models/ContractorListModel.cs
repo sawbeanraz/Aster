@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Aster.Web.Models {
+namespace Aster.Web.Areas.Admin.Models {
     public class ContractorListModel {
 
         public IList<ContractorModel> contractors;

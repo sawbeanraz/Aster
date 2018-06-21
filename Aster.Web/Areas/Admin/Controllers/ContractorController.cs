@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Aster.Core.Services.Contractors;
+using Aster.Web.Areas.Admin.Models;
 using Aster.Web.Mapper;
-using Aster.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Aster.Web.Controllers {
+namespace Aster.Web.Areas.Admin.Controllers {
+    [Area("Admin")]
     public class ContractorController : Controller {
-
         private readonly IContractorService _contractorService;
-        
+
 
         public ContractorController(IContractorService contractorService) {
 
-            _contractorService = contractorService;            
+            _contractorService = contractorService;
         }
-   
+
 
         public async Task<IActionResult> Index() {
 
@@ -26,7 +26,7 @@ namespace Aster.Web.Controllers {
 
             var contractors = await _contractorService.GetContractors();
 
-            _list.contractors = contractors.Select(c => c.ToModel() ).ToList();
+            _list.contractors = contractors.Select(c => c.ToModel()).ToList();
 
 
             var test = await _contractorService.GetBankAccounts(1);
@@ -36,7 +36,7 @@ namespace Aster.Web.Controllers {
 
             return View(_list);
         }
-
+        
         public async Task<IActionResult> Detail(int Id) {
 
             var c = await _contractorService

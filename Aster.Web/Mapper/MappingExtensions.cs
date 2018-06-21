@@ -1,6 +1,6 @@
 ﻿using Aster.Core.Domain.Contractors;
 using Aster.System.Mapper;
-using Aster.Web.Models;
+using Aster.Web.Areas.Admin.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

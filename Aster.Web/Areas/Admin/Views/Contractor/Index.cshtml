@@ -1,4 +1,4 @@
-﻿@model Aster.Web.Models.ContractorListModel
+﻿@model Aster.Web.Areas.Admin.Models.ContractorListModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -34,7 +34,7 @@
                         <i class="fa fa-circle" style="color: red;"></i> Active
                     </span>
 
-                    <a asp-area="" asp-controller="contractor" asp-action="detail" asp-route-id="@c.Id">
+                    <a asp-area="admin" asp-controller="contractor" asp-action="detail" asp-route-id="@c.Id">
                         <strong class="d-block text-gray-dark">@c.ReferenceNo / @c.Forename @c.Surname </strong>
                     </a>
 

@@ -4,7 +4,47 @@
 }
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-category">Search</h5>
+                <h4 class="card-title">Contractor</h4>
+            </div>
+
+            <div class="card-body">
+                @using(Html.BeginForm()) {
+
+
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="ReferenceNo">
+                                Reference No:
+                            </label>
+                            <input type="text" class="form-control" id="ReferenceNo"
+                                   name="ReferenceNo"
+                                   value="" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <label for="Name">Name</label>
+                            <input type="text" class="form-control" id="Name" name="Name" placeholder="" value="">
+                            <div class="invalid-feedback">
+                                Valid first name is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-3 text-right">
+                            <input type="submit" class="btn btn-primary" value="Search" />
+                        </div>
+                    </div>
+                }
+            
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
         <div class="card">
             <div class="card-header">
                 <h5 class="card-category">Contractors</h5>
@@ -39,7 +79,7 @@
                                         @c.ReferenceNo
                                     </td>
                                     <td>
-                                        <a asp-area="admin" asp-controller="contractor" asp-action="detail" asp-route-id="@c.Id">
+                                        <a asp-area="admin" asp-controller="contractor" asp-action="edit" asp-route-id="@c.Id">
                                             @c.Forename @c.Surname
                                         </a>
                                     </td>

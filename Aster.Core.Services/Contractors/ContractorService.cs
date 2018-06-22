@@ -64,7 +64,7 @@ namespace Aster.Core.Services.Contractors {
             return await _contractorRepository.InsertAsync(contractor);
         }
 
-        public async void UpdateContractor(Contractor contractor) {
+        public async Task UpdateContractor(Contractor contractor) {
             await _contractorRepository.UpdateAsync(contractor);
         }
 

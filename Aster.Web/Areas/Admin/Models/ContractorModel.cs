@@ -22,5 +22,8 @@ namespace Aster.Web.Areas.Admin.Models {
 
         public string ContactNo { get; set; }
         public string Email { get; set; }
+
+        public DateTime CreatedOnUtc { get; set; }
+        public DateTime UpdatedOnUtc { get; set; }
     }
 }

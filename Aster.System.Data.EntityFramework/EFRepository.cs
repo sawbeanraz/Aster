@@ -100,7 +100,9 @@ namespace Aster.System.Data.EntityFramework {
                 if(entity == null) {
                     throw new ArgumentNullException(nameof(entity));
                 }
-                //_context.Entry(entity).State = EntityState.Modified;                
+
+                //_context.Entry(entity).State = EntityState.Modified;
+                Entities.Update(entity);
                 await _context.SaveChangesAsync();
             } catch(DbUpdateException dbEx) {
                 throw new Exception(GetFullErrorTextAndRollbackEntityChanges(dbEx), dbEx);

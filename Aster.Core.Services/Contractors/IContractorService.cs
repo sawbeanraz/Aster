@@ -12,7 +12,7 @@ namespace Aster.Core.Services.Contractors {
         Task<Contractor> GetContractorByReference(string referenceNo);
         Task<Contractor> GetContractorById(int Id);
         Task<Contractor> InsertContrator(Contractor contractor);
-        void UpdateContractor(Contractor contractor);
+        Task UpdateContractor(Contractor contractor);
         void DeleteContractor(Contractor contractor);
 
 

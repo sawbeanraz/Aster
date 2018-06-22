@@ -2,7 +2,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
-  </PropertyGroup>  
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Views\Contractor\**" />
+    <Content Remove="Views\Contractor\**" />
+    <EmbeddedResource Remove="Views\Contractor\**" />
+    <None Remove="Views\Contractor\**" />
+  </ItemGroup>  
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
@@ -15,7 +21,6 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Mapper\" />
     <Folder Include="Data\" />
-    <Folder Include="Views\Contractor\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
     <DotNetCliToolReference Include="Microsoft.DotNet.Watcher.Tools" Version="2.0.0" />

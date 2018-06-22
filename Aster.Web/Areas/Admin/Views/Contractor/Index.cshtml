@@ -1,72 +1,63 @@
 ﻿@model Aster.Web.Areas.Admin.Models.ContractorListModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Contractors";
 }
 
-
-
-
-<div class="container">
-    <div class="d-flex align-items-center p-3 my-3 text-white-50 rounded box-shadow bg-dark">
-        <div class="lh-100">
-            <h6 class="mb-0 text-white lh-100">Contractors</h6>
-            <small>List of contractors</small>
-        </div>
-    </div>
-
-
-    <div class="paper">
-
-
-        <div class="contractors-list">
-            <h5 class="contactor-list-header">
-                Search result
-            </h5>
-
-            @foreach(var c in Model.contractors) {
-            <div class="media text-muted pt-3">                
-                <div class="contractor-avatar">
-                    <i class="icon icon-user"></i>
-                </div>
-
-                <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-                    <span class="status status-active pull-right">
-                        <i class="fa fa-circle" style="color: red;"></i> Active
-                    </span>
-
-                    <a asp-area="admin" asp-controller="contractor" asp-action="detail" asp-route-id="@c.Id">
-                        <strong class="d-block text-gray-dark">@c.ReferenceNo / @c.Forename @c.Surname </strong>
-                    </a>
-
-
-                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-
-
-                    <br />
-                    <span class="docs">
-                        <span class="badge badge-pill badge-info">contracts</span>
-                        <span class="badge badge-pill badge-info">EE documents</span>
-                        <span class="badge badge-pill badge-info">Employement Document</span>
-                    </span>
-
-                    <br />
-
-
-
-                    <span class="timesheet">
-                        Timesheets
-                        <span class="badge badge-danger">2</span>
-                    </span>
-
-                    <span>Updated 28 days ago</span>
-                </p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-category">Contractors</h5>
+                <h4 class="card-title">Contractor List</h4>
             </div>
-            }
-            <small class="d-block text-right mt-3">
-                <a href="#">Search again</a>
-            </small>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <tr>
+                                <th>
+                                    Ref No
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    NI Number
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Contact No
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var c in Model.contractors) {
+                                <tr>
+                                    <td>
+                                        @c.ReferenceNo
+                                    </td>
+                                    <td>
+                                        <a asp-area="admin" asp-controller="contractor" asp-action="detail" asp-route-id="@c.Id">
+                                            @c.Forename @c.Surname
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @c.NationalInsuranceNo
+                                    </td>
+                                    <td>
+                                        @c.Email
+                                    </td>
+                                    <td>
+                                        @c.ContactNo
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-
-
 </div>

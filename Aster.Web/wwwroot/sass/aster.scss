@@ -1,43 +1,33 @@
-﻿//Bootstrap 
+﻿//Bootstrap
 @import "~bootstrap/scss/bootstrap.scss";
 
 //Font Awesome
 $fa-font-path: "~font-awesome/fonts";
-@import '~font-awesome/scss/font-awesome.scss';
-
+@import "~font-awesome/scss/font-awesome.scss";
 
 // Simple Line Icons
-$simple-line-font-path: '~simple-line-icons/fonts/';
-@import '~simple-line-icons/scss/simple-line-icons.scss';
+$simple-line-font-path: "~simple-line-icons/fonts/";
+@import "~simple-line-icons/scss/simple-line-icons.scss";
 
-
-
-@import './vendor/now-ui-dashboard.scss';
-
-
-
+@import "./vendor/now-ui-dashboard.scss";
 
 @import "./aster/signin";
 @import "./aster/carousel";
 
-@import './aster/paper';
-@import './aster/footer';
+@import "./aster/paper";
+@import "./aster/footer";
 
-
-@import './aster/contractors';
+@import "./aster/contractors";
 
 .fixed-top {
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .5)
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.5);
 }
 
-
-
-body { 
-    background-color: #f1f1f1;
+body {
+  background-color: #f1f1f1;
 }
-
 
 .main-container {
-    margin-top: 76px;
-    margin-bottom: 60px;
+  margin-top: 76px;
+  margin-bottom: 60px;
 }

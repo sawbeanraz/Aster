@@ -25,5 +25,11 @@ namespace Aster.Web.Areas.Admin.Models {
 
         public DateTime CreatedOnUtc { get; set; }
         public DateTime UpdatedOnUtc { get; set; }
+
+
+
+
+        public IEnumerable<BankAccountModel> BankAccounts { get; set;}
+        
     }
 }

@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Aster.Core.Services.Contractors;
+using Aster.Web.Areas.Admin.Mapper;
 using Aster.Web.Areas.Admin.Models;
 using Aster.Web.Areas.Admin.Models.Contractors;
-using Aster.Web.Mapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Aster.Web.Areas.Admin.Controllers {
@@ -57,11 +56,11 @@ namespace Aster.Web.Areas.Admin.Controllers {
             if(ModelState.IsValid) {
                 var contractor = await _contractorService.InsertContrator(model.ToEntity());
                 return View(contractor.ToModel());
-            }  else {
+            } else {
                 return View(model);
             }
         }
-        
+
 
         public async Task<IActionResult> Edit(int id) {
             var c = await _contractorService
@@ -76,10 +75,19 @@ namespace Aster.Web.Areas.Admin.Controllers {
 
             model.UpdatedOnUtc = DateTime.UtcNow;
             await _contractorService.UpdateContractor(model.ToEntity());
-            
+
             return View(new ContractorDetailViewModel {
                 Contractor = model
-            });            
+            });
+        }
+        
+        public async Task<IActionResult> BankAccounts(int Id) {
+            var contractor = (await _contractorService.GetContractorById(Id)).ToModel();
+            contractor.BankAccounts = (await _contractorService.GetBankAccounts(Id))
+                .Select(account => account.ToModel());
+            
+
+            return View(contractor);
         }
     }
 }

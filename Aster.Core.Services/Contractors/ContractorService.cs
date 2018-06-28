@@ -73,14 +73,17 @@ namespace Aster.Core.Services.Contractors {
 
 
         #region Contractor Bank Account
-        public void DeleteContractorBankAccount(ContractorBankAccount contractorBankAccount) {
-
-            _contractorBankAccountRepository
+        public async Task DeleteContractorBankAccount(ContractorBankAccount contractorBankAccount) {
+            await _contractorBankAccountRepository
                 .DeleteAsync(contractorBankAccount);
         }
 
-        public async Task<IList<ContractorBankAccount>> GetBankAccounts(int ContractorId) {
+        public async Task<ContractorBankAccount> GetBankAccountById(int BankAccountId) {
+            return await _contractorBankAccountRepository
+                .GetByIdAsync(BankAccountId);
+        }
 
+        public async Task<IList<ContractorBankAccount>> GetBankAccounts(int ContractorId) {
             var q = from account in _contractorBankAccountRepository.List
                     where account.ContractorId == ContractorId
                     select account;
@@ -92,11 +95,11 @@ namespace Aster.Core.Services.Contractors {
             throw new NotImplementedException();
         }
 
-        public void UpdateContractorBankAccount(ContractorBankAccount contractorBankAccount) {
-            throw new NotImplementedException();
+        public async Task UpdateContractorBankAccount(ContractorBankAccount contractorBankAccount) {
+            await _contractorBankAccountRepository.UpdateAsync(contractorBankAccount);
         }
 
-        public void UpdateDefaultBankAccount(ContractorBankAccount contractorBankAccount) {
+        public Task UpdateDefaultBankAccount(ContractorBankAccount contractorBankAccount) {
             throw new NotImplementedException();
         }
         #endregion

@@ -4,28 +4,11 @@
 }
 
 <div class="row">
-    <div class="col-md-3 order-md-2">
-        <div class="card">
-            <div class="card-body">
-                <div class="list-group list-group-flush">
-                    <a class="list-group-item d-flex justify-content-between lh-condensed" href="#">
-                        Personal
-                    </a>
-                    <a class="list-group-item d-flex justify-content-between lh-condensed" href="#">
-                        Bank Accounts
-                    </a>
-                    <a class="list-group-item d-flex justify-content-between lh-condensed" href="#">
-                        Payments
-                    </a>
-                    <a class="list-group-item d-flex justify-content-between lh-condensed" href="#">
-                        Assignments
-                    </a>
-                </div>
-            </div>
-        </div>
+    <div class="col-md-3 order-md-1">
+        @await Html.PartialAsync("_Contractor.Info", Model.Contractor)
     </div>
 
-    <div class="col-md-9 order-md-1">
+    <div class="col-md-9 order-md-2">
         <div class="card">
             <div class="card-header">
                 <h5 class="card-category">Contractor</h5>
@@ -111,6 +94,14 @@
                                    value="@Model.Contractor.Email">
                             <div class="invalid-feedback">
                                 Please enter a valid email address for shipping updates.
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="contactNo">Contact No</label>
+                            <input type="text" class="form-control" id="ContactNo" placeholder=""
+                                   name="ContactNo" value="@Model.Contractor.ContactNo" />
+                            <div class="invalid-feedback">
+                                Please enter valid telephone number
                             </div>
                         </div>
                     </div>

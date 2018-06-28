@@ -21,13 +21,14 @@ namespace Aster.Core.Services.Contractors {
         #region Contractor Bank Details
 
         Task<IList<ContractorBankAccount>> GetBankAccounts(int ContractorId);
+        Task<ContractorBankAccount> GetBankAccountById(int BankAccountId);
         Task<ContractorBankAccount> InsertContractorBankAccount(ContractorBankAccount contractorBankAccount);
 
-        void UpdateContractorBankAccount(ContractorBankAccount contractorBankAccount);
+        Task UpdateContractorBankAccount(ContractorBankAccount contractorBankAccount);
 
-        void DeleteContractorBankAccount(ContractorBankAccount contractorBankAccount);
+        Task DeleteContractorBankAccount(ContractorBankAccount contractorBankAccount);
 
-        void UpdateDefaultBankAccount(ContractorBankAccount contractorBankAccount);
+        Task UpdateDefaultBankAccount(ContractorBankAccount contractorBankAccount);
 
         #endregion
     }

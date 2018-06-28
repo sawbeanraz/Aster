@@ -1,6 +1,4 @@
-﻿using Aster.Core.Domain.Contractors;
-using Aster.System.Mapper;
-using Aster.Web.Areas.Admin.Models;
+﻿using Aster.System.Mapper;
 using AutoMapper;
 
 namespace Aster.Web.Mapper {
@@ -8,8 +6,7 @@ namespace Aster.Web.Mapper {
     {
 
         public DomainModelMapperConfiguration() {
-            CreateMap<Contractor, ContractorModel>();
-            CreateMap<ContractorModel, Contractor>();
+            
         }
 
         public int Order => 0;

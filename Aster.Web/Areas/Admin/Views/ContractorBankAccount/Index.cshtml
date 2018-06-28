@@ -1,0 +1,53 @@
+﻿@model Aster.Web.Areas.Admin.Models.BankAccountModel
+@{
+    ViewData["Title"] = "Bank Details";
+}
+
+
+<div class="row">    
+    <div class="col-md-12 order-md-1">
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-category">Contractor Bank Accounts</h5>
+                <h4 class="card-title">
+                    Bank Account
+                </h4>
+            </div>
+            <div class="card-body">
+                <form class="needs-valiation" novalidate method="post">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            @Html.LabelFor(m => m.SortCode, new { @class = "label-control" })
+                            @Html.TextBoxFor(m => m.SortCode, new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            @Html.LabelFor(m => m.AccountNumber, new { @class = "label-control" })
+                            @Html.TextBoxFor(m => m.AccountNumber, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            @Html.LabelFor(m => m.BankName, new { @class = "label-control" })
+                            @Html.TextBoxFor(m => m.BankName, new { @class = "form-control" })
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            @Html.LabelFor(m => m.BankBranchName, new { @class = "label-control" })
+                            @Html.TextBoxFor(m => m.BankBranchName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="row">                        
+                        <div class="col-md-6 mb-3">
+                            @Html.LabelFor(m => m.BankAddress, new { @class = "label-control" })
+                            @Html.TextBoxFor(m => m.BankAddress, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    @Html.HiddenFor(m => m.ContractorId)
+                    <input class="btn btn-primary" type="submit" value="Save"/>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

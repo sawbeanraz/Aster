@@ -99,8 +99,20 @@ namespace Aster.Core.Services.Contractors {
             await _contractorBankAccountRepository.UpdateAsync(contractorBankAccount);
         }
 
-        public Task UpdateDefaultBankAccount(ContractorBankAccount contractorBankAccount) {
-            throw new NotImplementedException();
+        public async Task UpdateDefaultBankAccount(ContractorBankAccount contractorBankAccount) {
+            var contractorAccounts = from account in _contractorBankAccountRepository.List
+                        where account.Id != contractorBankAccount.Id && account.Default == true
+                        select account;
+
+            var updatedBankAccount = contractorAccounts.ToList().Select(acc => {
+                acc.Default = false;
+                return acc;
+            });
+
+            await _contractorBankAccountRepository.UpdateAsync(updatedBankAccount);
+
+            contractorBankAccount.Default = true;
+            await _contractorBankAccountRepository.UpdateAsync(contractorBankAccount);
         }
         #endregion
 

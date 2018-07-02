@@ -114,6 +114,9 @@ namespace Aster.System.Data.EntityFramework {
                 if(entities == null) {
                     throw new ArgumentNullException(nameof(entities));
                 }
+                foreach(var e in entities) {
+                    Entities.Update(e);
+                }
                 await _context.SaveChangesAsync();
             } catch(DbUpdateException dbEx) {
                 throw new Exception(GetFullErrorTextAndRollbackEntityChanges(dbEx), dbEx);

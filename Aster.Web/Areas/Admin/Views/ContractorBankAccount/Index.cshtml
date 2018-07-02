@@ -42,6 +42,13 @@
                             @Html.LabelFor(m => m.BankAddress, new { @class = "label-control" })
                             @Html.TextBoxFor(m => m.BankAddress, new { @class = "form-control" })
                         </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-check">
+                                @Html.CheckBoxFor(m => m.Default, new { @class = "form-control-input" })
+                                <span class="form-check-sign"></span>
+                                @Html.LabelFor(m => m.Default, new { @class = "form-check-label" })
+                            </div>
+                        </div>
                     </div>
                     @Html.HiddenFor(m => m.ContractorId)
                     <input class="btn btn-primary" type="submit" value="Save"/>

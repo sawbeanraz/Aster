@@ -30,5 +30,12 @@ namespace Aster.Web.Areas.Admin.Controllers {
             return View(bankAccount);
         }
 
+
+        public async Task<IActionResult> MakeDefault(int Id) {
+            var bankAccount = await _contractorService.GetBankAccountById(Id);
+            await _contractorService.UpdateDefaultBankAccount(bankAccount);
+
+            return await Task.Run<ActionResult>(() => RedirectToAction("Index", Id));
+        }
     }
 }

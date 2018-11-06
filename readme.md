@@ -1,10 +1,11 @@
 # Aster 
 
+# Moving project to node from dotNet
+
 ## Requirements
-Dotnet Core SDK
+Node
 Docker
 Docker Compose 
-Node
 Webpack
 
 ## Quick Start

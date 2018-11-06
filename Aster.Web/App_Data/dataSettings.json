@@ -1,4 +1,0 @@
-﻿{
-  "DataProvider": "sqlserver",
-  "DataConnectionString": "Data Source=localhost;Initial Catalog=dbaster;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=StrongPassw0rd;MultipleActiveResultSets=True"
-}

@@ -1,5 +1,7 @@
 # Aster 
 
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
+
 # Moving project to node from dotNet
 
 ## Requirements

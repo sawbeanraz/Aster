@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-  res.send('Hello World')
+  res.send('Hello World');
 });
 
 app.use(router);
@@ -13,4 +13,4 @@ app.use(router);
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Express running on port ${port}`));
+app.listen(port, () => console.log(`Express running on port ${port}`)); // eslint-disable-line

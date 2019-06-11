@@ -26,5 +26,8 @@
   },
   "bugs": {
     "url": "https://github.com/ayrbox/Aster/issues"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11"
   }
 }

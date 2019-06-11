@@ -1,13 +1,27 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "lerna exec --parallel -- babel --root-mode upward src -d lib --ignore **/*.story.js,**/*.spec.js"
+  },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-styled-components": "^1.10.0",
     "eslint": "^5.11.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
-    "lerna": "^3.4.3"
+    "lerna": "^3.14.1",
+    "webpack": "^4.33.0"
   }
 }

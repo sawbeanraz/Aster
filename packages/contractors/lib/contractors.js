@@ -1,23 +1,38 @@
-const Sequelize = require('sequelize');
+module.exports = (sequalize, DataTypes) => sequalize.define('contractors', {
+  referenceNo: DataTypes.STRING,
+  forename: DataTypes.STRING,
+  middlename: DataTypes.STRING,
+  surname: DataTypes.STRING,
+  dateOfBirth: DataTypes.DATE,
+  gender: DataTypes.STRING,
+  nationalInsuranceNo: DataTypes.STRING,
+  address1: DataTypes.STRING,
+  address2: DataTypes.STRING,
+  county: DataTypes.STRING,
+  postCode: DataTypes.STRING,
+  contactNo: DataTypes.STRING,
+  email: DataTypes.STRING,
+  createdAt: DataTypes.DATE,
+  updatedAt: DataTypes.DATE,
+});
 
-class Contractors extends Sequalize.Model {
-  Contractors.init({
-    ReferenceNo: Sequelize.STRING,
-    Forename: Sequalize.STRING,
-    Middlename: Sequalize.STRING,
-    Surname: Sequalize.STRING,
-    DateOfBirth: Sequalize.DATE,
-    Gender: Sequalize.STRING,
-    NationalInsuranceNo: Sequalize.STRING,
-    Address1: Sequalize.STRING,
-    Address2: Sequalize.STRING,
-    County: Sequalize.STRING,
-    PostCode: Sequalize.STRING,
-    ContactNo: Sequalize.STRING,
-    Email: Sequalize.STRING,
-    CreatedOnUtc: Sequalize.DATE,
-    UpdatedOnUtc: Sequalize.DATE
-  }, { sequelize, modelName: 'contractors' })
-}
 
-export default Contractors;
+// CREATE TABLE contractors (
+// 	id INT PRIMARY KEY AUTO_INCRMENT,
+// 	referenceNo VARCHAR(20),
+// 	forename VARCHAR(200),
+// 	middlename VARCHAR(200),
+// 	surname VARCHAR(200),
+// 	dateOfBirth DATETIME,
+// 	gender VARCHAR(20),
+// 	nationalInsuranceNo VARCHAR(100),
+// 	address1 VARCHAR(100),
+// 	address2 VARCHAR(100),
+// 	county VARCHAR(100),
+// 	postCode VARCHAR(20),
+// 	contactNo VARCHAR(30),
+// 	email VARCHAR(255),
+// 	createdOnUtc DATETIME NOT NULL,
+// 	updatedOnUtc DATETIME NOT NULL,
+//   createdAt DATETIME,
+// );

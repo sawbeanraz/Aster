@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "lint": "eslint . --cache --ignore-pattern .gitignore",
-    "test": "test"
+    "test": "echo 'API test'"
   },
   "author": "",
   "license": "ISC",

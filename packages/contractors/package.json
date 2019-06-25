@@ -1,15 +1,16 @@
 {
-  "name": "aster-contractors",
+  "name": "contractors",
   "version": "0.0.1",
-  "description": "Module for contractors",
+  "description": "Module that deals with contractors info",
   "keywords": [
-    "contractors",
-    "aster"
+    "contractor",
+    "worker",
+    "locum"
   ],
   "author": "Ayrbox <srdx7@hotmail.com>",
   "homepage": "https://github.com/ayrbox/Aster#readme",
   "license": "MIT",
-  "main": "index.js",
+  "main": "lib/contractors.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -28,6 +29,10 @@
     "url": "https://github.com/ayrbox/Aster/issues"
   },
   "dependencies": {
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.11",
+    "sequelize": "^5.8.12"
+  },
+  "devDependencies": {
+    "mariadb": "^2.0.5"
   }
 }

@@ -15,24 +15,3 @@ module.exports = (sequalize, DataTypes) => sequalize.define('contractors', {
   createdAt: DataTypes.DATE,
   updatedAt: DataTypes.DATE,
 });
-
-
-// CREATE TABLE contractors (
-// 	id INT PRIMARY KEY AUTO_INCRMENT,
-// 	referenceNo VARCHAR(20),
-// 	forename VARCHAR(200),
-// 	middlename VARCHAR(200),
-// 	surname VARCHAR(200),
-// 	dateOfBirth DATETIME,
-// 	gender VARCHAR(20),
-// 	nationalInsuranceNo VARCHAR(100),
-// 	address1 VARCHAR(100),
-// 	address2 VARCHAR(100),
-// 	county VARCHAR(100),
-// 	postCode VARCHAR(20),
-// 	contactNo VARCHAR(30),
-// 	email VARCHAR(255),
-// 	createdOnUtc DATETIME NOT NULL,
-// 	updatedOnUtc DATETIME NOT NULL,
-//   createdAt DATETIME,
-// );

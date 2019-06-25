@@ -28,5 +28,8 @@
   },
   "bugs": {
     "url": "https://github.com/ayrbox/Aster/issues"
+  },
+  "dependencies": {
+    "sequelize": "^5.8.12"
   }
 }

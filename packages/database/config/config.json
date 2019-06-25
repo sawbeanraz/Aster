@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "useraster",
+    "password": "mariapass",
+    "database": "dbaster",
+    "host": "localhost",
+    "dialect": "mariadb",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "aster_test",
+    "host": "aster",
+    "dialect": "mariadb",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mariadb",
+    "operatorsAliases": false
+  }
+}

@@ -5,3 +5,4 @@ node_modules
 *.swp
 .eslintcache
 *.log
+.vscode

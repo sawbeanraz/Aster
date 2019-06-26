@@ -1,7 +1,5 @@
-'use strict';
+const Contractors = require('../models/contractors');
 
-module.exports = database;
-
-function database() {
-    // TODO
-}
+module.exports = {
+  Contractors,
+};

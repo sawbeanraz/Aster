@@ -30,6 +30,7 @@
     "url": "https://github.com/ayrbox/Aster/issues"
   },
   "dependencies": {
+    "faker": "^4.1.0",
     "sequelize": "^5.8.12"
   }
 }

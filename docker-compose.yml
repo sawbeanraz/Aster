@@ -11,8 +11,8 @@ services:
       MYSQL_DATABASE: dbaster
     volumes: 
       - aster_data:/var/lib/mysql
-  mssqldb:
-    image: "microsoft/mssql-server-linux:latest"
+  mssql:
+    image: "mcr.microsoft.com/mssql/server"
     hostname: "dockersqlserver"
     environment:
       SA_PASSWORD: "StrongPassw0rd"

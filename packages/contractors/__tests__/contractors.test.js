@@ -1,7 +1,5 @@
 const Sequelize = require('sequelize');
-
 const contractors = require('../lib/contractors');
-
 
 describe('contractors', () => {
   let testSequalize;
@@ -13,15 +11,10 @@ describe('contractors', () => {
     });
   });
 
-  it('needs tests', (done) => {
+  it('needs tests', async () => {
     const u = contractors(testSequalize, Sequelize);
-    u.findAll().then((data) => {
-      console.log('\n\n\n', JSON.stringify(data, null, 2), '\n\n\n');
-    }).catch((err) => {
-      console.log('ERROR', err);
-    }).finally(() => {
-      done();
-    });
+    const data = u.findAll();
     // console.log('data>>>>', data);
+    console.log('\n\n\n', JSON.stringify(data, null, 2), '\n\n\n');
   });
 });

@@ -4,7 +4,7 @@
     "password": "mariapass",
     "database": "dbaster",
     "host": "localhost",
-    "dialect": "mariadb",
+    "dialect": "postgres",
     "operatorsAliases": false
   },
   "test": {

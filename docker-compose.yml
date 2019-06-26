@@ -20,5 +20,15 @@ services:
       ACCEPT_EULA: "Y"
     ports:
       - '1433:1433'
+  pg:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment: 
+      POSTGRES_USER: useraster
+      POSTGRES_PASSWORD: mariapass 
+      POSTGRES_DB: dbaster
+       
 volumes: 
   aster_data:

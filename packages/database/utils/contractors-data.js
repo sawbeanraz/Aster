@@ -1,6 +1,6 @@
 const faker = require('faker');
 
-const fakeContractors = n => new Array(n).fill(undefined).map(() => ({
+const fakeContractors = n => new Array(n).fill(() => ({
   referenceNo: faker.random.number(),
   forename: faker.name.firstName(),
   middlename: null,
@@ -16,6 +16,6 @@ const fakeContractors = n => new Array(n).fill(undefined).map(() => ({
   email: faker.internet.email(),
   createdAt: new Date(),
   updatedAt: new Date(),
-}));
+})).map(f => f());
 
 module.exports = fakeContractors;
